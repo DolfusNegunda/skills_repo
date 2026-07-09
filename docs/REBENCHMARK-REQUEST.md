@@ -10,7 +10,7 @@ assessment — do not rely on the previous report's numbers; several are now sta
 The previous benchmark's single biggest finding was correct and has now been acted
 on: **executable, deterministic scripts for document work** (the one axis where
 Anthropic's flagship `docx`/`xlsx`/`pptx` skills clearly led). That gap has been
-closed for every local document skill. Re-benchmark to confirm — independently.
+closed for every local document skill. Re-benchmark to assess this independently.
 
 ## What changed since the last version
 
