@@ -1,0 +1,21 @@
+name: validate-skills
+
+# Runs the skill consistency gate on every push and pull request so no change
+# can introduce a broken frontmatter, name mismatch, broken cross-link, or
+# duplicate skill name. Mirrors skill-builder Step 6.
+
+on:
+  push:
+    branches: [main, master]
+  pull_request:
+
+jobs:
+  validate:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Validate all skills
+        run: python skill-builder/scripts/validate_skills.py .

@@ -1,0 +1,28 @@
+{
+  "company_name": "ACME Consulting",
+  "client_name": "Globex Corporation",
+  "client_key": "globex",
+  "project_name": "Data Platform Migration",
+  "week": "28",
+  "report_date": "2026-07-10",
+  "prepared_by": "D. Negunda",
+  "overall_status": "Amber",
+  "summary": "Delivery advanced on all fronts this week: revenue reconciliation logic is signed off and three of eight executive dashboards are rebuilt and validated against current figures. The project remains Amber solely due to the pending production CRM read access (requested 2026-07-02), which gates the reporting cutover; access this week would return the project to Green.",
+  "accomplishments": [
+    "Finance signed off the revenue reconciliation logic.",
+    "Rebuilt and validated 3 of 8 executive dashboards (Sales, Operations, Finance) against current production figures.",
+    "Nightly reconciliation checks detected two data-quality breaches on the CRM feed; the upstream issue was corrected by the Globex team the same day."
+  ],
+  "in_progress": [
+    "Rebuilding the remaining 5 executive dashboards.",
+    "Drafting the cutover runbook; the rollback plan section is next."
+  ],
+  "blockers": [
+    "Awaiting production read access to the Globex CRM (requested 2026-07-02, requires Globex IT approval) — this blocks the reporting cutover and is the sole driver of the Amber status."
+  ],
+  "upcoming": [
+    "Dry-run the cutover in the staging environment (booked for Thursday).",
+    "Complete the remaining dashboards and begin UAT."
+  ],
+  "notes": "We recommend the CRM access request be raised at the Thursday steering committee if not resolved beforehand."
+}

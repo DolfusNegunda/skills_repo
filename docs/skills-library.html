@@ -1,0 +1,456 @@
+<title>Office Skills Library</title>
+<style>
+  :root {
+    --paper:#F5F7FA; --surface:#FFFFFF; --surface-2:#EFF3F7;
+    --ink:#121922; --muted:#5A6673; --faint:#8A95A2;
+    --line:#E1E7EE; --line-strong:#CDD6E0;
+    --accent:#2E6FA8; --accent-deep:#1F3A5F; --accent-soft:#E7F0F8;
+    --ok:#2E7D32; --ok-soft:#E4F1E4; --warn:#9A6B12; --warn-soft:#F6ECD6;
+    --mono: ui-monospace, "Cascadia Code", "SF Mono", Menlo, Consolas, monospace;
+    --sans: system-ui, -apple-system, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+    --r:12px; --maxw:1120px;
+    --s1:.75rem; --s2:1rem; --s3:1.5rem; --s4:2rem; --s5:3rem;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root {
+      --paper:#0C1117; --surface:#141C25; --surface-2:#0F161D;
+      --ink:#E8EDF2; --muted:#98A4B1; --faint:#6C7885;
+      --line:#232E39; --line-strong:#334150;
+      --accent:#5DA8E6; --accent-deep:#9CC6EC; --accent-soft:#152532;
+      --ok:#71C177; --ok-soft:#16241a; --warn:#E0B24D; --warn-soft:#2a2210;
+    }
+  }
+  :root[data-theme="light"] {
+    --paper:#F5F7FA; --surface:#FFFFFF; --surface-2:#EFF3F7;
+    --ink:#121922; --muted:#5A6673; --faint:#8A95A2;
+    --line:#E1E7EE; --line-strong:#CDD6E0;
+    --accent:#2E6FA8; --accent-deep:#1F3A5F; --accent-soft:#E7F0F8;
+    --ok:#2E7D32; --ok-soft:#E4F1E4; --warn:#9A6B12; --warn-soft:#F6ECD6;
+  }
+  :root[data-theme="dark"] {
+    --paper:#0C1117; --surface:#141C25; --surface-2:#0F161D;
+    --ink:#E8EDF2; --muted:#98A4B1; --faint:#6C7885;
+    --line:#232E39; --line-strong:#334150;
+    --accent:#5DA8E6; --accent-deep:#9CC6EC; --accent-soft:#152532;
+    --ok:#71C177; --ok-soft:#16241a; --warn:#E0B24D; --warn-soft:#2a2210;
+  }
+
+  * { box-sizing:border-box; }
+  body { margin:0; background:var(--paper); color:var(--ink); font-family:var(--sans);
+    line-height:1.6; -webkit-font-smoothing:antialiased; }
+  .wrap { max-width:var(--maxw); margin:0 auto; padding:0 clamp(1rem,4vw,2.5rem); }
+  a { color:var(--accent); text-decoration:none; }
+  a:hover { text-decoration:underline; }
+  :focus-visible { outline:2px solid var(--accent); outline-offset:2px; border-radius:4px; }
+
+  /* ---- top bar ---- */
+  .topbar { position:sticky; top:0; z-index:20; background:color-mix(in srgb, var(--paper) 88%, transparent);
+    backdrop-filter:blur(8px); border-bottom:1px solid var(--line); }
+  .topbar .wrap { display:flex; align-items:center; justify-content:space-between; gap:1rem; height:54px; }
+  .brand { font-family:var(--mono); font-weight:600; font-size:.9rem; letter-spacing:.02em; color:var(--ink); }
+  .brand b { color:var(--accent); }
+  .navpills { display:flex; gap:.4rem; flex-wrap:wrap; }
+  .navpills a { font-size:.78rem; color:var(--muted); padding:.3rem .6rem; border-radius:20px;
+    border:1px solid transparent; }
+  .navpills a:hover { color:var(--ink); background:var(--surface-2); text-decoration:none; }
+
+  /* ---- hero ---- */
+  .hero { padding:clamp(2.5rem,7vw,4.5rem) 0 var(--s4); border-bottom:1px solid var(--line); }
+  .eyebrow { font-family:var(--mono); font-size:.74rem; text-transform:uppercase; letter-spacing:.16em;
+    color:var(--accent); margin:0 0 1rem; }
+  h1 { font-size:clamp(2.1rem,5.2vw,3.2rem); line-height:1.08; margin:0 0 1rem; font-weight:700;
+    letter-spacing:-.02em; text-wrap:balance; }
+  .lede { font-size:clamp(1.05rem,2vw,1.2rem); color:var(--muted); max-width:60ch; margin:0 0 1.75rem; }
+  .meta { display:flex; flex-wrap:wrap; gap:.5rem 1.4rem; font-size:.85rem; color:var(--muted);
+    font-family:var(--mono); }
+  .meta b { color:var(--ink); font-weight:600; }
+  .meta span { display:inline-flex; align-items:center; gap:.4rem; }
+  .dot { width:6px; height:6px; border-radius:50%; background:var(--ok); display:inline-block; }
+
+  /* ---- section ---- */
+  section { padding:var(--s5) 0; border-bottom:1px solid var(--line); }
+  .sec-head { display:flex; align-items:baseline; gap:.9rem; margin:0 0 .4rem; }
+  .sec-head h2 { font-size:1.5rem; margin:0; letter-spacing:-.01em; }
+  .sec-num { font-family:var(--mono); font-size:.8rem; color:var(--faint); }
+  .sec-intro { color:var(--muted); max-width:65ch; margin:0 0 var(--s4); }
+
+  /* ---- pipeline diagram ---- */
+  .flow-scroll { overflow-x:auto; padding-bottom:.5rem; }
+  .flow { display:flex; align-items:stretch; gap:0; min-width:min-content; }
+  .node { flex:0 0 auto; background:var(--surface); border:1px solid var(--line-strong); border-radius:10px;
+    padding:.7rem .9rem; min-width:150px; }
+  .node .n-name { font-family:var(--mono); font-size:.82rem; color:var(--accent); font-weight:600; }
+  .node .n-role { font-size:.72rem; color:var(--muted); margin-top:.15rem; }
+  .arrow { flex:0 0 auto; align-self:center; padding:0 .55rem; color:var(--faint); font-family:var(--mono); }
+  .node.out { background:var(--accent-deep); border-color:var(--accent-deep); }
+  .node.out .n-name, .node.out .n-role { color:#fff; }
+  :root[data-theme="dark"] .node.out, @media (prefers-color-scheme:dark){ }
+  .feeders { margin-top:1rem; font-size:.85rem; color:var(--muted); }
+  .feeders code { font-family:var(--mono); color:var(--accent); font-size:.82rem; }
+
+  /* ---- legend ---- */
+  .legend { display:flex; flex-wrap:wrap; gap:.6rem 1.2rem; margin-top:1.5rem; font-size:.8rem; color:var(--muted); }
+  .legend .tag { margin-right:.35rem; }
+
+  /* ---- cards ---- */
+  .grid { display:grid; grid-template-columns:repeat(auto-fill,minmax(340px,1fr)); gap:1.1rem; }
+  .card { background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:1.3rem 1.3rem 1.4rem;
+    display:flex; flex-direction:column; gap:.85rem; transition:border-color .15s ease, transform .15s ease; }
+  .card:hover { border-color:var(--line-strong); }
+  @media (prefers-reduced-motion:no-preference){ .card:hover{ transform:translateY(-2px); } }
+  .card h3 { margin:0; font-family:var(--mono); font-size:1.02rem; font-weight:600; color:var(--ink);
+    display:flex; align-items:center; gap:.5rem; flex-wrap:wrap; }
+  .card h3 .slash { color:var(--accent); }
+  .what { color:var(--muted); font-size:.92rem; margin:0; }
+  .tags { display:flex; flex-wrap:wrap; gap:.4rem; }
+  .tag { font-family:var(--mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.05em;
+    padding:.2rem .5rem; border-radius:5px; border:1px solid var(--line-strong); color:var(--muted); }
+  .tag.ok { background:var(--ok-soft); color:var(--ok); border-color:transparent; }
+  .tag.py { background:var(--accent-soft); color:var(--accent); border-color:transparent; }
+  .tag.meta { background:var(--warn-soft); color:var(--warn); border-color:transparent; }
+  .block-label { font-family:var(--mono); font-size:.68rem; text-transform:uppercase; letter-spacing:.12em;
+    color:var(--faint); margin:.2rem 0 .35rem; }
+  .chips { display:flex; flex-wrap:wrap; gap:.35rem; }
+  .chip { font-size:.76rem; color:var(--muted); background:var(--surface-2); border:1px solid var(--line);
+    padding:.18rem .5rem; border-radius:20px; }
+  pre { margin:0; background:var(--surface-2); border:1px solid var(--line); border-radius:8px;
+    padding:.7rem .8rem; overflow-x:auto; }
+  pre code { font-family:var(--mono); font-size:.78rem; color:var(--ink); white-space:pre; }
+  .pairs { font-size:.8rem; color:var(--muted); margin-top:auto; padding-top:.3rem; }
+  .pairs code { font-family:var(--mono); color:var(--accent); font-size:.76rem; }
+  .files { font-family:var(--mono); font-size:.75rem; color:var(--muted); line-height:1.7; }
+
+  /* ---- install / footer ---- */
+  .cols { display:grid; grid-template-columns:repeat(auto-fit,minmax(260px,1fr)); gap:1.5rem; }
+  .step { background:var(--surface); border:1px solid var(--line); border-radius:var(--r); padding:1.2rem; }
+  .step h4 { margin:0 0 .5rem; font-size:.95rem; }
+  .step p { margin:0 0 .6rem; color:var(--muted); font-size:.88rem; }
+  footer { padding:var(--s4) 0 var(--s5); color:var(--faint); font-size:.82rem; }
+  footer .wrap { display:flex; flex-wrap:wrap; justify-content:space-between; gap:1rem; }
+  .callout { background:var(--accent-soft); border:1px solid color-mix(in srgb,var(--accent) 25%, transparent);
+    border-radius:var(--r); padding:1rem 1.2rem; color:var(--ink); font-size:.9rem; margin-top:1.5rem; }
+  .callout b { color:var(--accent-deep); }
+  :root[data-theme="dark"] .callout b { color:var(--accent-deep); }
+</style>
+
+<div class="topbar">
+  <div class="wrap">
+    <span class="brand">/ <b>office-skills</b></span>
+    <nav class="navpills" aria-label="Sections">
+      <a href="#foundation">Foundation</a>
+      <a href="#communication">Communication</a>
+      <a href="#docs-data">Documents &amp; Data</a>
+      <a href="#brand">Brand</a>
+      <a href="#install">Install</a>
+    </nav>
+  </div>
+</div>
+
+<header class="hero">
+  <div class="wrap">
+    <p class="eyebrow">Internal Claude Agent Skills · v1</p>
+    <h1>A skills library for everyday office work</h1>
+    <p class="lede">Nine reusable, house-style skills that teach Claude to do the document and
+      communication work every team repeats — meeting notes, emails, status reports, branded
+      deliverables, document summaries, and more. Each is a self-contained folder Claude loads only
+      when it's relevant.</p>
+    <div class="meta">
+      <span><b>9</b>&nbsp;skills</span>
+      <span><span class="dot"></span> works in Claude Code, the API &amp; claude.ai</span>
+      <span>no external services · no MCP required</span>
+    </div>
+  </div>
+</header>
+
+<main class="wrap">
+
+  <!-- PIPELINE -->
+  <section id="pipeline">
+    <div class="sec-head"><h2>How the pieces fit together</h2></div>
+    <p class="sec-intro">The skills are designed to compose. The core pipeline turns raw updates into
+      a branded, shippable deliverable — content skills produce the substance, and one rendering skill
+      applies the standard look and the right client logo.</p>
+    <div class="flow-scroll">
+      <div class="flow">
+        <div class="node"><div class="n-name">/summarizing-meeting-notes</div><div class="n-role">raw notes → decisions + action items</div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="n-name">/writing-status-reports</div><div class="n-role">action items → status + <code>status.json</code></div></div>
+        <div class="arrow">→</div>
+        <div class="node"><div class="n-name">/producing-branded-documents</div><div class="n-role">JSON + template + logo</div></div>
+        <div class="arrow">→</div>
+        <div class="node out"><div class="n-name">Word / PDF</div><div class="n-role">branded deliverable</div></div>
+      </div>
+    </div>
+    <p class="feeders">Standalone skills plug into the same flow: <code>/drafting-business-email</code>,
+      <code>/writing-change-notes</code>, <code>/summarizing-documents</code>,
+      <code>/generating-data-reports</code>, and <code>/authoring-brand-guidelines</code> (which keeps the
+      brand the renderer uses in sync).</p>
+
+    <div class="legend">
+      <span><span class="tag ok">works today</span> prompt-only, no setup</span>
+      <span><span class="tag py">python</span> bundles a runnable script</span>
+      <span><span class="tag meta">foundation</span> underpins the others</span>
+    </div>
+  </section>
+
+  <!-- FOUNDATION -->
+  <section id="foundation">
+    <div class="sec-head"><span class="sec-num">01</span><h2>Foundation</h2></div>
+    <p class="sec-intro">The two skills the rest of the library is built on: one to author skills to a
+      consistent standard, one to render branded documents.</p>
+    <div class="grid">
+
+      <article class="card">
+        <h3><span class="slash">/</span>skill-builder <span class="tag meta">foundation</span></h3>
+        <p class="what">Author new skills in the repo's house style — strong descriptions, lean bodies,
+          progressive disclosure, and a pre-publish checklist.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">create a skill</span><span class="chip">write a SKILL.md</span><span class="chip">fix frontmatter</span><span class="chip">stand up a skills repo</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>"Using skill-builder, create a skill for X."</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · references/{frontmatter, skill-template,<br>authoring-checklist, anti-patterns}.md · examples/</div>
+        </div>
+        <p class="pairs">Pairs with <code>everything</code> — it's how each skill here was built.</p>
+      </article>
+
+      <article class="card">
+        <h3><span class="slash">/</span>producing-branded-documents <span class="tag py">python</span></h3>
+        <p class="what">Render Word/PDF deliverables from standard templates with a fixed company
+          layout, headers/footers, and per-client logos — with a validation gate before anything ships.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">weekly project update</span><span class="chip">client-facing doc</span><span class="chip">onboard a client logo</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>python scripts/fill_docx.py \
+  --data status.json --out update.docx
+python scripts/validate_output.py update.docx
+python scripts/export_pdf.py update.docx   # optional</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">assets/{templates, logos, brand} · scripts/{make_template,<br>fill_docx, validate_output, export_pdf}.py · references/</div>
+        </div>
+        <p class="pairs">Fed by <code>/writing-status-reports</code> · brand kept in sync by <code>/authoring-brand-guidelines</code></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- COMMUNICATION -->
+  <section id="communication">
+    <div class="sec-head"><span class="sec-num">02</span><h2>Communication</h2></div>
+    <p class="sec-intro">The highest-frequency work in any office — turning meetings, updates, and
+      changes into clear writing. All prompt-only, no setup.</p>
+    <div class="grid">
+
+      <article class="card">
+        <h3><span class="slash">/</span>summarizing-meeting-notes <span class="tag ok">works today</span></h3>
+        <p class="what">Raw notes, transcripts, or chat logs → a structured summary of decisions,
+          action items (owner + due date), risks, and open questions.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">summarize a meeting</span><span class="chip">pull action items</span><span class="chip">write minutes</span><span class="chip">quick recap</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>Paste the notes:
+"Summarize these meeting notes and pull the action items."</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · references/output-format.md ·<br>examples/example-standup.md</div>
+        </div>
+        <p class="pairs">Feeds <code>/writing-status-reports</code> (action items → progress &amp; blockers)</p>
+      </article>
+
+      <article class="card">
+        <h3><span class="slash">/</span>drafting-business-email <span class="tag ok">works today</span></h3>
+        <p class="what">Draft, reply to, or rewrite professional emails in a consistent tone — always
+          delivered with two labelled tone/length variants so you pick, not iterate.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">write / reply</span><span class="chip">follow-up</span><span class="chip">decline</span><span class="chip">apologise for a delay</span><span class="chip">escalate</span><span class="chip">cold intro</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>"Reply to Priya — we can't take the extra module
+this quarter, keep the door open for Q4."</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · references/tone-and-scenarios.md ·<br>examples/example-followup.md</div>
+        </div>
+        <p class="pairs">Escalate to <code>/producing-branded-documents</code> when it should be a formal doc</p>
+      </article>
+
+      <article class="card">
+        <h3><span class="slash">/</span>writing-status-reports <span class="tag ok">works today</span></h3>
+        <p class="what">Scattered updates → a structured status report with an honest RAG status, in
+          four audience variants, plus a JSON data file that the renderer turns into a branded doc.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">weekly status</span><span class="chip">project update</span><span class="chip">RAG status</span><span class="chip">team roll-up</span><span class="chip">client progress</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>"Turn these updates into this week's client status report."
+→ emits status.json → producing-branded-documents</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · references/{report-variants,<br>status-data-contract}.md · examples/{example-weekly.md, status.json}</div>
+        </div>
+        <p class="pairs">In: <code>/summarizing-meeting-notes</code> · Out: <code>/producing-branded-documents</code></p>
+      </article>
+
+      <article class="card">
+        <h3><span class="slash">/</span>writing-change-notes <span class="tag ok">works today</span></h3>
+        <p class="what">A list of changes → clean release notes (Keep a Changelog + SemVer) or a
+          business change note (what/why/impact/effective date/action required).</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">release notes</span><span class="chip">changelog entry</span><span class="chip">version bump?</span><span class="chip">policy change announcement</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>"Write release notes for these commits and
+recommend the version bump."</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · references/formats.md ·<br>examples/{example-release-notes, example-business-change}.md</div>
+        </div>
+        <p class="pairs">Often ships alongside <code>/writing-status-reports</code></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- DOCS & DATA -->
+  <section id="docs-data">
+    <div class="sec-head"><span class="sec-num">03</span><h2>Documents &amp; Data</h2></div>
+    <p class="sec-intro">Getting signal out of long documents and raw datasets — reading and
+      summarizing, or analyzing and visualizing.</p>
+    <div class="grid">
+
+      <article class="card">
+        <h3><span class="slash">/</span>summarizing-documents <span class="tag ok">works today</span></h3>
+        <p class="what">Long contracts, reports, policies, or PDFs → an executive summary, key points,
+          and a risks/obligations review at any requested length — every claim traceable to the source.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">summarize a contract</span><span class="chip">key points</span><span class="chip">risks &amp; obligations</span><span class="chip">TL;DR</span><span class="chip">Q&amp;A over a doc</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>Attach the PDF:
+"Summarize this contract in one page + list the risks."</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · references/summary-types.md ·<br>examples/example-contract-summary.md</div>
+        </div>
+        <p class="pairs">Reads natively — scanned PDFs included. No extraction tooling.</p>
+      </article>
+
+      <article class="card">
+        <h3><span class="slash">/</span>generating-data-reports <span class="tag py">python</span></h3>
+        <p class="what">A CSV plus a short brief → a single self-contained HTML report with summary
+          tables and charts embedded as base64 — one portable file, no attachments.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">report from a CSV</span><span class="chip">visualize data</span><span class="chip">analyze a spreadsheet export</span><span class="chip">shareable HTML</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>pip install pandas matplotlib
+python scripts/build_report.py \
+  --data sales.csv --title "Q2 Snapshot" --out report.html</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · scripts/build_report.py ·<br>references/report-structure.md · examples/sample_sales.csv</div>
+        </div>
+        <p class="pairs">For Word/PDF instead, use <code>/producing-branded-documents</code></p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- BRAND -->
+  <section id="brand">
+    <div class="sec-head"><span class="sec-num">04</span><h2>Brand</h2></div>
+    <p class="sec-intro">The human-facing counterpart to the renderer's machine spec — so the brand
+      people read and the brand documents are rendered from stay in lockstep.</p>
+    <div class="grid">
+
+      <article class="card">
+        <h3><span class="slash">/</span>authoring-brand-guidelines <span class="tag ok">works today</span></h3>
+        <p class="what">Create or maintain a brand style guide — logo usage, palette (with exact hex),
+          typography, imagery, voice &amp; tone, and do/don't examples — with a fill-in template.</p>
+        <div>
+          <div class="block-label">When to use</div>
+          <div class="chips"><span class="chip">write a brand guide</span><span class="chip">brand book</span><span class="chip">update after a rebrand</span><span class="chip">add a voice section</span></div>
+        </div>
+        <div>
+          <div class="block-label">How to use</div>
+          <pre><code>"Write us a brand guide — here's our logo and 3 colors."
+(then cross-check the machine brand-spec)</code></pre>
+        </div>
+        <div>
+          <div class="block-label">In the box</div>
+          <div class="files">SKILL.md · references/guide-structure.md ·<br>assets/brand-guide-template.md · examples/example-brand-guide.md</div>
+        </div>
+        <p class="pairs">Keeps <code>/producing-branded-documents</code>' brand-spec.md in sync</p>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- INSTALL -->
+  <section id="install">
+    <div class="sec-head"><span class="sec-num">05</span><h2>Using these skills</h2></div>
+    <p class="sec-intro">Every skill is a folder with a <code>SKILL.md</code>. Claude loads one when your
+      request matches its description, or you can invoke it directly.</p>
+    <div class="cols">
+      <div class="step">
+        <h4>In Claude Code</h4>
+        <p>Place or symlink a skill folder under <code>.claude/skills/</code>, then type
+          <code>/skill-name</code> — or just describe the task and Claude auto-loads the match.</p>
+        <pre><code>ln -s .../summarizing-meeting-notes \
+  ~/.claude/skills/summarizing-meeting-notes</code></pre>
+      </div>
+      <div class="step">
+        <h4>Share with the team</h4>
+        <p>Commit a <code>.claude/skills/</code> folder into a shared project repo — everyone gets the
+          same skills on checkout, and the brand/templates stay a single source of truth.</p>
+      </div>
+      <div class="step">
+        <h4>Extend or add one</h4>
+        <p>Use <code>/skill-builder</code> to author new skills to the same standard: strong
+          description, lean body, a concrete example, and a validation step.</p>
+      </div>
+    </div>
+    <div class="callout">
+      <b>Design principle across the library:</b> document skills are thin house-style layers over
+      Claude's built-in document generation — they carry your templates, tone, and checklists, and never
+      reimplement file-format internals or depend on an external MCP server.
+    </div>
+  </section>
+
+</main>
+
+<footer>
+  <div class="wrap">
+    <span>Office Skills Library · built and verified with <code style="font-family:var(--mono)">/skill-builder</code></span>
+    <span>Skills authored on Fable · reviewed on Opus · original work, your license</span>
+  </div>
+</footer>
