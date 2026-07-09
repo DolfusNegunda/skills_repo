@@ -52,6 +52,16 @@ spend your effort on quality.
 | [designing-dashboards](designing-dashboards/SKILL.md) | Decision-oriented dashboards and KPI layouts. |
 | [crafting-presentation-narratives](crafting-presentation-narratives/SKILL.md) | Story structure before slide design. |
 
+**Document ingestion skills** — read and parse any incoming file into clean, structured content (the front door for document tasks):
+| Skill | Focus |
+|---|---|
+| [processing-documents](processing-documents/SKILL.md) | Document-type awareness + router: detect type, ingest, route to the right handler. |
+| [processing-word-documents](processing-word-documents/SKILL.md) | Extract Word (.docx) content, headings, tables, notes, tracked changes. |
+| [processing-powerpoint-files](processing-powerpoint-files/SKILL.md) | Extract PowerPoint (.pptx) per-slide text, tables, and speaker notes. |
+| [processing-excel-files](processing-excel-files/SKILL.md) | Extract Excel/CSV data with correct types, dates, and formula results. |
+| [processing-pdf-documents](processing-pdf-documents/SKILL.md) | PDF extraction, split/merge, redaction, forms (also listed above). |
+| [extracting-text-with-ocr](extracting-text-with-ocr/SKILL.md) | Scans/images → accurate structured text (also listed above). |
+
 **Communication, reporting & delivery skills** — the original core skills, now part of this category:
 | Skill | Focus |
 |---|---|
@@ -77,7 +87,10 @@ spend your effort on quality.
   or `building-google-slides` (the artifact).
 - `engineering-spreadsheets` (the model design) → `engineering-excel-workbooks`
   or `engineering-google-sheets` (the implementation) → `designing-dashboards`.
-- `extracting-text-with-ocr` → `processing-pdf-documents` → `comparing-documents`.
+- **Any document task starts with ingestion:** `processing-documents` detects the
+  type and routes to `processing-word-documents` / `processing-powerpoint-files` /
+  `processing-excel-files` / `processing-pdf-documents` / `extracting-text-with-ocr`,
+  then hands clean content to `summarizing-documents`, `comparing-documents`, or analysis.
 - Every draft ends with `proofreading-text` and, when substantive, `editing-prose`.
 
 ## Cross-category links

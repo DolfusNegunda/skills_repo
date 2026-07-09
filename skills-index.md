@@ -7,7 +7,7 @@ skill's body up front.
 Regenerate after adding, moving, or renaming a skill:
 `python skill-builder/scripts/generate_index.py`
 
-**83 skills** across 5 groups.
+**87 skills** across 5 groups.
 
 ## Meta
 
@@ -42,7 +42,11 @@ Regenerate after adding, moving, or renaming a skill:
 | formatting-documents | Use when the user asks to "format this", "make it look professional/consistent", "clean up the formatting", or fix inconsistent styling. | [office/formatting-documents/SKILL.md](office/formatting-documents/SKILL.md) |
 | generating-data-reports | Use when asked to generate a data report, summarize or visualize a CSV, analyze tabular data, or produce a shareable one-file HTML analysis from a spreadsheet export. | [office/generating-data-reports/SKILL.md](office/generating-data-reports/SKILL.md) |
 | managing-outlook-mail | Use when the user asks to "organize my inbox", "set up Outlook rules/folders", "manage my email", handle calendar/scheduling in Outlook, or reduce email overload. | [office/managing-outlook-mail/SKILL.md](office/managing-outlook-mail/SKILL.md) |
+| processing-documents | Use whenever the user hands over a file to read, summarize, extract from, analyze, or convert and you need its contents — "read/ingest/parse this document", "what's in this file", "extract the text/tables/data". | [office/processing-documents/SKILL.md](office/processing-documents/SKILL.md) |
+| processing-excel-files | Use when the user gives you a spreadsheet to read, extract, or analyze, or asks to "read/parse this Excel/CSV", "pull the data from this workbook", or "get the tables out of this file". | [office/processing-excel-files/SKILL.md](office/processing-excel-files/SKILL.md) |
 | processing-pdf-documents | Use when the user asks to "extract text/data from a PDF", "split/merge/combine PDFs", "fill a PDF form", "redact a PDF", or process/convert PDF documents. | [office/processing-pdf-documents/SKILL.md](office/processing-pdf-documents/SKILL.md) |
+| processing-powerpoint-files | Use when the user gives you a deck to read, summarize, or extract from, or asks to "read/parse this PowerPoint", "pull the text/notes from these slides", or "get the content out of this deck". | [office/processing-powerpoint-files/SKILL.md](office/processing-powerpoint-files/SKILL.md) |
+| processing-word-documents | Use when the user gives you a Word document to read, summarize, extract from, or convert, or asks to "read/parse this .docx", "pull the tables from this Word doc", or "get the content out of this document". | [office/processing-word-documents/SKILL.md](office/processing-word-documents/SKILL.md) |
 | producing-branded-documents | Use when creating a weekly project update, status report, or any client-facing document that must follow the company's standard look with the correct client logo. | [office/producing-branded-documents/SKILL.md](office/producing-branded-documents/SKILL.md) |
 | proofreading-text | Use when the user asks to "proofread", "check for typos/errors", "final pass", or "check grammar" on near-final text. | [office/proofreading-text/SKILL.md](office/proofreading-text/SKILL.md) |
 | recording-meeting-minutes | Use when the user asks to "write meeting minutes", "formal minutes", "board/committee minutes", or a governance-grade record of a meeting. | [office/recording-meeting-minutes/SKILL.md](office/recording-meeting-minutes/SKILL.md) |
