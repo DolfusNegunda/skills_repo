@@ -30,6 +30,19 @@ Run through this before publishing a skill to the repo.
 - [ ] Forward slashes in every path (`references/x.md`, not `references\x.md`)
 - [ ] Scripts marked as **execute** vs. **read**; required packages listed
 
+## Determinism (does it ship a tool where prose isn't enough?)
+- [ ] If the skill **produces** a file (`.docx`/`.xlsx`/`.pptx`/`.pdf`/`.csv`), it
+      bundles a `scripts/validate_*.py` that checks the real failure modes, emits a
+      machine-readable report, and exits non-zero on error
+- [ ] If the skill **ingests/processes** a file, it bundles a `scripts/extract_*.py`
+      that reads it deterministically and reports fidelity (what it could not read)
+- [ ] The `## Workflow` wires the **produce → validate → fix → re-validate loop**
+      (for producers) or **ingest → fidelity self-check** (for processors) — not a
+      one-time "run the linter" step
+- [ ] Every bundled script was actually run and tested, not just written
+- [ ] Rationale: a cheap model runs a tested tool more reliably than it interprets
+      prose — determinism is the whole point of the library
+
 ## Testing (does it work?)
 - [ ] Tested on a realistic request with a fresh Claude — it triggered
 - [ ] It found and used the right reference files

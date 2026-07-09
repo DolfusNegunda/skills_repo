@@ -79,6 +79,15 @@ For quality-critical output, build a validate → fix → repeat loop:
 4. Only proceed when validation passes
 ```
 
+**If the skill produces or ingests a real file** (`.docx`/`.xlsx`/`.pptx`/`.pdf`/
+`.csv`), this loop must be backed by a bundled, tested script — a `validate_*.py`
+for producers (fails non-zero on the format's real failure modes) or an
+`extract_*.py` for processors (deterministic read + fidelity self-check). A tested
+tool a weak model runs beats prose it must interpret. See the "Determinism" section
+of [authoring-checklist.md](authoring-checklist.md); working examples:
+`office/engineering-excel-workbooks/scripts/validate_workbook.py` and
+`office/processing-excel-files/scripts/extract_workbook.py`.
+
 ## Progressive disclosure reminders
 
 - Link reference files **one level deep** from `SKILL.md` — reference files

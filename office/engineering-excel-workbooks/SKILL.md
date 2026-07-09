@@ -51,6 +51,7 @@ Progress:
 - [ ] 5. Add validation, dropdowns, and conditional formatting
 - [ ] 6. Add summaries / pivots / charts on top of clean data
 - [ ] 7. Audit: trace precedents, check totals, stress inputs
+- [ ] 8. Validate & repair: run the validator, fix every error, re-run until clean
 ```
 
 **Step 1 — Outputs first.** Know the answer the sheet must produce before building.
@@ -75,6 +76,21 @@ conditional formatting flags outliers and errors.
 **Step 7 — Audit.** Trace precedents on key outputs, reconcile totals, and stress-
 test extreme inputs (zero, negative, blank) before delivery.
 
+**Step 8 — Validate & repair (mandatory before delivery).** Do not hand over a
+workbook you have only eyeballed. Run the bundled validator, read its JSON
+`errors`, fix each one, and **re-run until `status` is `OK`** — a
+produce → validate → fix → re-validate loop, not a one-time check:
+
+```bash
+python scripts/validate_workbook.py path/to/workbook.xlsx
+```
+
+It fails (exit 1) on stray Excel error values (`#REF!`, `#DIV/0!`, …) and leftover
+placeholder text (`TBD`, `{{tag}}`, …), and warns on merged cells, empty sheets,
+and external links. If it warns that no cached formula results were found, open and
+save the file in Excel (or run a recalc step) so error results become checkable,
+then validate again.
+
 ## Principles
 1. **Separate inputs, logic, and outputs.** Never bury an assumption inside a formula.
 2. **One formula per column.** Consistency is auditability.
@@ -97,6 +113,23 @@ test extreme inputs (zero, negative, blank) before delivery.
 - **Whole-column volatile formulas** (e.g. entire-column array math) — kills performance.
 - **No error handling** — wrap risky lookups with IFERROR/IFNA meaningfully, not to hide bugs.
 - **Data and presentation mixed** — makes refresh and reuse impossible.
+
+## Known gotchas (mechanical, tool-specific)
+- **openpyxl does not calculate formulas.** A workbook written by openpyxl has
+  formula *strings* but no cached results, so `data_only=True` returns `None` for
+  them and the validator cannot check for `#DIV/0!`/`#REF!`. Open and save once in
+  Excel (or run a recalc step) to populate cached values, then validate.
+- **`data_only=True` reads the last cached value, not the live one.** If a formula
+  changed since the file was last opened in Excel, the cached result is stale. Never
+  trust a cached value you did not just recalculate.
+- **Dates are numbers.** Excel stores dates as serials; a "date" typed as text
+  (`"2026-07-08"`) will not sort or calculate. Store real dates, format for display.
+- **`read_only=True` speeds up large scans** but disables access to merged ranges
+  and some structure — use the normal mode when you need `merged_cells`.
+- **Merged cells hold their value only in the top-left cell**; the others read as
+  `None`. This silently breaks lookups and aggregates over the range.
+- **Leading apostrophe forces text** (`'0123`), so ZIP/ID codes keep leading zeros
+  but no longer compute — intended for codes, a bug for numbers.
 
 ## Validation checklist
 - [ ] Input cells are visually distinct and the only cells users edit.
@@ -123,6 +156,13 @@ test extreme inputs (zero, negative, blank) before delivery.
 ## Reference files
 - [references/formula-patterns.md](references/formula-patterns.md) — canonical formulas and when to use each.
 - [references/workbook-architecture.md](references/workbook-architecture.md) — sheet layout, naming, and audit conventions.
+
+## Scripts
+- [scripts/validate_workbook.py](scripts/validate_workbook.py) — **run this** before
+  delivery. Deterministic gate over a produced `.xlsx`: flags Excel error values and
+  leftover placeholders (fail), and merged cells / empty sheets / external links
+  (warn). Prints a JSON report and exits non-zero on error, so it drives the Step 8
+  fix-and-re-validate loop. Requires `openpyxl` (`pip install openpyxl`).
 
 ## Examples
 **Input:** "Build a loan calculator: principal, rate, term → monthly payment and schedule."

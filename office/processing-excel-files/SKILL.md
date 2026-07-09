@@ -42,7 +42,14 @@ Progress:
 - [ ] 3. Detect header row(s); set correct data types and parse dates
 - [ ] 4. Read formula RESULTS (values), not the formula strings, unless asked
 - [ ] 5. Handle merged cells, blanks, and multiple tables per sheet
-- [ ] 6. Verify totals/row counts against the source
+- [ ] 6. Verify totals/row counts against the source; check the fidelity warnings
+```
+
+The bundled `scripts/extract_workbook.py` does steps 1–5 deterministically for
+`.xlsx`/`.csv` and emits a fidelity block — prefer it over an ad-hoc read:
+
+```bash
+python scripts/extract_workbook.py path/to/file.xlsx   # JSON per sheet + fidelity
 ```
 
 **Step 2 — a sheet is not always one clean table.** There may be titles, blank
@@ -105,6 +112,13 @@ title rows); set numeric dtypes and parsed the month column as dates; read formu
 *results* for the computed totals; forward-filled a merged "Region" column; verified
 the extracted Q1 sum against the sheet's own total before reporting it.
 
+## Scripts
+- [scripts/extract_workbook.py](scripts/extract_workbook.py) — **run this** to ingest
+  an `.xlsx`/`.csv` deterministically. Emits per-sheet JSON (header + typed rows, dates
+  as ISO-8601, formula *results*, merged ranges, error cells) plus a `fidelity` block
+  that flags what could not be read faithfully (uncached formulas, merged cells).
+  Sniffs CSV delimiter/encoding (incl. UTF-8 BOM). Requires `openpyxl`.
+
 ## Automation opportunities
-- Bundle an `xlsx/csv → clean DataFrame/CSV per sheet` extraction script with type inference.
-- Chain into [generating-data-reports](../generating-data-reports/SKILL.md) or analysis.
+- The bundled extractor already does `xlsx/csv → clean per-sheet JSON`; chain its
+  output into [generating-data-reports](../generating-data-reports/SKILL.md) or analysis.

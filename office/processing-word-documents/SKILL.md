@@ -41,7 +41,14 @@ Progress:
 - [ ] 3. Extract tables faithfully (rows/cols; note merged cells)
 - [ ] 4. Capture headers/footers, footnotes, comments, tracked changes if relevant
 - [ ] 5. Extract images/embedded objects if the task needs them
-- [ ] 6. Verify against the source; note anything lossy
+- [ ] 6. Verify against the source; note anything lossy (check the fidelity report)
+```
+
+The bundled `scripts/extract_docx.py` does steps 1–4 deterministically and emits a
+fidelity report — prefer it over an ad-hoc read:
+
+```bash
+python scripts/extract_docx.py path/to/file.docx   # Markdown + tables + fidelity
 ```
 
 **Step 1 — proven tooling, benchmarked to how strong models do it:** for structure
@@ -103,6 +110,13 @@ schedule table extracted as a Markdown table (two merged-cell tables flagged for
 review); defined-term numbering preserved; tracked changes present — delivered as
 accepted-text with a note that 6 unresolved changes exist and can be surfaced.
 
+## Scripts
+- [scripts/extract_docx.py](scripts/extract_docx.py) — **run this** to ingest a
+  `.docx` deterministically. Emits Markdown (heading styles → `#`/`##`/`###`, tables as
+  Markdown, paragraphs and tables in document order), structured `tables`, and a
+  `fidelity` block flagging tracked changes, comments, footnotes, images, headers/
+  footers, and merged table cells. Requires `python-docx`. Convert `.doc` → `.docx` first.
+
 ## Automation opportunities
-- Bundle a `docx → Markdown + tables(JSON)` extraction script for repeatable ingestion.
-- Chain into [summarizing-documents](../summarizing-documents/SKILL.md) or [comparing-documents](../comparing-documents/SKILL.md).
+- The bundled extractor already does `docx → Markdown + tables(JSON)`; chain its output
+  into [summarizing-documents](../summarizing-documents/SKILL.md) or [comparing-documents](../comparing-documents/SKILL.md).

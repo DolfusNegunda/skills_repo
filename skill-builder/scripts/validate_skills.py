@@ -80,6 +80,17 @@ for d in sorted(skill_dirs):
         warns.append(f"{sp}: description may not be third person")
     if not re.search(r"\b(use (this|when)|when the user|when you)\b", desc, re.I):
         warns.append(f"{sp}: description may lack a 'when to use' cue")
+    # Script-gap heuristic: file-producing/processing skills should ship a script.
+    # Scoped to name prefixes that imply real file I/O AND an actual format mention,
+    # so it does not fire on every skill. Advisory only (WARNING), never an error.
+    if name.startswith(("authoring-", "building-", "engineering-", "processing-",
+                        "producing-", "generating-", "running-", "automating-",
+                        "extracting-")):
+        if re.search(r"\.(docx|xlsx|xlsm|pptx|pdf|csv)\b", raw, re.I) and \
+                not os.path.isdir(os.path.join(d, "scripts")):
+            warns.append(f"{sp}: produces/processes a file format but ships no "
+                         "scripts/ - consider a validate_*/extract_* script "
+                         "(see authoring-checklist 'Determinism')")
     for link in rel_links(raw):
         if not os.path.exists(os.path.normpath(os.path.join(d, link))):
             errors.append(f"{sp}: broken link -> {link}")
