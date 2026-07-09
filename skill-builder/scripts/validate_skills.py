@@ -80,12 +80,14 @@ for d in sorted(skill_dirs):
         warns.append(f"{sp}: description may not be third person")
     if not re.search(r"\b(use (this|when)|when the user|when you)\b", desc, re.I):
         warns.append(f"{sp}: description may lack a 'when to use' cue")
-    # Script-gap heuristic: file-producing/processing skills should ship a script.
-    # Scoped to name prefixes that imply real file I/O AND an actual format mention,
-    # so it does not fire on every skill. Advisory only (WARNING), never an error.
+    # Script-gap heuristic: LOCAL file-producing/processing skills should ship a
+    # script. Scoped to name prefixes that imply real file I/O AND an actual format
+    # mention, so it does not fire on every skill. Google Workspace skills are exempt:
+    # they operate via API and produce cloud documents, so the offline-script pattern
+    # does not apply (their validation is API-based). Advisory only, never an error.
     if name.startswith(("authoring-", "building-", "engineering-", "processing-",
                         "producing-", "generating-", "running-", "automating-",
-                        "extracting-")):
+                        "extracting-")) and "google" not in name:
         if re.search(r"\.(docx|xlsx|xlsm|pptx|pdf|csv)\b", raw, re.I) and \
                 not os.path.isdir(os.path.join(d, "scripts")):
             warns.append(f"{sp}: produces/processes a file format but ships no "

@@ -19,3 +19,17 @@ jobs:
           python-version: "3.11"
       - name: Validate all skills
         run: python skill-builder/scripts/validate_skills.py .
+
+  smoke-test-scripts:
+    # Proves the bundled document scripts actually run and give the documented
+    # verdicts, against generated fixtures.
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
+        with:
+          python-version: "3.11"
+      - name: Install document libraries
+        run: pip install openpyxl python-docx python-pptx pypdf reportlab
+      - name: Smoke-test bundled scripts
+        run: python skill-builder/scripts/smoke_test_scripts.py

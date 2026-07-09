@@ -52,6 +52,7 @@ Progress:
 - [ ] 5. Insert headers/footers, page numbers, section breaks
 - [ ] 6. Number and caption figures/tables; add cross-references
 - [ ] 7. Validate against the checklist; update all fields
+- [ ] 8. Validate & repair: run the validator, fix every error, re-run until clean
 ```
 
 **Step 1 — Frame it.** Restate document type, audience, approximate length, and
@@ -77,6 +78,18 @@ columns, or headers/footers per chapter. Add page numbers.
 **Step 7 — Finalize.** Update all fields (TOC, cross-refs, numbering), run the
 validation checklist, and hand off. Finish with
 [proofreading-text](../proofreading-text/SKILL.md).
+
+**Step 8 — Validate & repair (mandatory before delivery).** Run the bundled
+validator, read its JSON `errors`, fix each, and **re-run until `status` is `OK`**:
+
+```bash
+python scripts/validate_docx.py path/to/file.docx
+```
+
+It fails on unfilled template tags and leftover placeholders, and warns when there
+are no heading styles, images lack alt text, or the page size is neither Letter nor
+A4. Note: field results (TOC/cross-refs) only populate once Word opens and updates
+fields — the validator checks content, not rendered field output.
 
 ## Principles
 1. **Structure is data.** Styles make a document machine-navigable and re-brandable.
@@ -127,6 +140,12 @@ validation checklist, and hand off. Finish with
 ## Reference files
 - [references/style-architecture.md](references/style-architecture.md) — the standard style set and when to use each.
 - [references/word-features.md](references/word-features.md) — TOC, sections, cross-references, fields, accessibility how-to.
+
+## Scripts
+- [scripts/validate_docx.py](scripts/validate_docx.py) — **run this** before delivery.
+  Fails on unfilled tags / placeholders; warns on missing heading styles, images with
+  no alt text, and non-Letter/A4 page size. JSON report, non-zero exit on error →
+  drives the Step 8 loop. Requires `python-docx`.
 
 ## Examples
 **Input:** "Turn this 12-page Markdown spec into a Word document with a TOC."

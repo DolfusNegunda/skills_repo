@@ -48,7 +48,12 @@ Progress:
 ```
 
 **Step 1 — detect, don't assume.** Confirm the real type by extension *and* signature
-(a `.pdf` can be a scan; a `.xlsx` can be a renamed CSV). **Step 2 — PDF text-layer
+(a `.pdf` can be a scan; a `.xlsx` can be a renamed CSV). Run the bundled detector,
+which reads magic bytes / container parts and returns the route:
+
+```bash
+python scripts/detect_type.py path/to/file   # -> detected_type + route_to (JSON)
+``` **Step 2 — PDF text-layer
 test:** if direct text extraction returns little/nothing, it's scanned → OCR.
 **Step 3 — route** using the table below. **Step 5 — verify:** spot-check extracted
 tables/numbers against the source; extraction is silently lossy (merged cells,
@@ -112,6 +117,11 @@ multi-column, reading order) — never trust it unchecked.
 tables, flag two low-confidence figures → hand clean text to
 [summarizing-documents](../summarizing-documents/SKILL.md), noting the summary rests
 on OCR with two figures to verify.
+
+## Scripts
+- [scripts/detect_type.py](scripts/detect_type.py) — **run this first.** Detects the
+  true type by signature (magic bytes + OOXML container inspection), flags
+  extension/signature mismatches, and returns the skill to route to. Stdlib only.
 
 ## Automation opportunities
 - A single intake pipeline: detect → route → extract → validate → downstream task.

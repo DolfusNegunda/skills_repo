@@ -48,7 +48,12 @@ Progress:
 ```
 
 **Step 1 — Classify & specify.** Determine if the PDF has a real text layer or is
-scanned images. Pin the exact operation and parameters before touching it.
+scanned images. Pin the exact operation and parameters before touching it. The
+bundled extractor makes the text-vs-scanned call deterministically:
+
+```bash
+python scripts/extract_pdf.py path/to/file.pdf   # per-page text + has_text_layer + route
+```
 
 **Step 2 — OCR if needed.** If there's no text layer, run OCR first; extraction on
 a scanned PDF returns nothing without it.
@@ -112,6 +117,13 @@ text cannot be selected, copied, or recovered from the file.
 
 ## Reference files
 - [references/pdf-operations.md](references/pdf-operations.md) — tool-by-operation guide and redaction/extraction verification.
+
+## Scripts
+- [scripts/extract_pdf.py](scripts/extract_pdf.py) — **run this** to extract PDF text
+  and classify text-layer vs. scanned. Emits per-page text + char counts, encryption
+  status, and a fidelity block that routes scanned/image PDFs to OCR (the classic
+  empty-extraction failure). Requires `pypdf`. Structural ops (split/merge/redact) and
+  table extraction still use the libraries in the operations reference.
 
 ## Examples
 **Input:** "Extract the invoice tables from these 30 PDFs into one CSV."

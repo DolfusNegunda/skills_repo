@@ -41,7 +41,14 @@ Progress:
 - [ ] 3. Order text by shape position (top-to-bottom, left-to-right), not shape index
 - [ ] 4. Extract tables and, crucially, speaker notes
 - [ ] 5. Extract images/diagrams if the task needs them
-- [ ] 6. Assemble in slide order; note un-extractable content
+- [ ] 6. Assemble in slide order; note un-extractable content (check fidelity)
+```
+
+The bundled `scripts/extract_pptx.py` does steps 1–4 deterministically (reading-order
+sorted, notes included) and emits a fidelity block — prefer it over an ad-hoc read:
+
+```bash
+python scripts/extract_pptx.py path/to/deck.pptx   # per-slide JSON + fidelity
 ```
 
 **Step 2–3 — reading order is the trap.** Shapes are stored in creation order, not
@@ -101,6 +108,11 @@ non-extractable with a note to pull the source workbook; delivered to
 [summarizing-documents](../summarizing-documents/SKILL.md) as slide-ordered content
 so the summary follows the deck's actual argument.
 
+## Scripts
+- [scripts/extract_pptx.py](scripts/extract_pptx.py) — **run this** to ingest a `.pptx`
+  deterministically. Emits per-slide JSON (title, position-sorted body, tables, speaker
+  notes) + a fidelity block (slide/image counts, notes coverage). Requires `python-pptx`.
+
 ## Automation opportunities
-- Bundle a `pptx → per-slide JSON (title/body/notes/tables)` extraction script.
-- Chain into summarization or into a Word/report conversion.
+- The bundled extractor already does `pptx → per-slide JSON (title/body/notes/tables)`;
+  chain its output into summarization or a Word/report conversion.

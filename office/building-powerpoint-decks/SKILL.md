@@ -49,6 +49,7 @@ Progress:
 - [ ] 5. Apply consistent type, spacing, and color
 - [ ] 6. Add title, agenda, section dividers, and speaker notes
 - [ ] 7. Review for legibility, consistency, and slide count
+- [ ] 8. Validate & repair: run the validator, fix every error, re-run until clean
 ```
 
 **Step 1 — Narrative locked.** Do not open slide design until the story is set.
@@ -73,6 +74,17 @@ Put detail in speaker notes, not on the slide.
 
 **Step 7 — Review.** Read every slide from across the room; cut any slide that
 doesn't advance the argument.
+
+**Step 8 — Validate & repair (mandatory before delivery).** Run the bundled
+validator, read its JSON `errors`, fix each, and **re-run until `status` is `OK`**:
+
+```bash
+python scripts/validate_pptx.py path/to/deck.pptx
+```
+
+It fails on leftover placeholder text (`lorem ipsum`, `TBD`, `{{tag}}`, …) and warns
+on empty slides, title-less slides, and wall-of-text slides. Design judgment (the
+checklist below) still applies — the script catches the mechanical misses.
 
 ## Principles
 1. **One idea per slide.** If a slide has two messages, split it.
@@ -119,6 +131,11 @@ doesn't advance the argument.
 
 ## Reference files
 - [references/deck-anatomy.md](references/deck-anatomy.md) — layouts, slide types, and typography rules.
+
+## Scripts
+- [scripts/validate_pptx.py](scripts/validate_pptx.py) — **run this** before delivery.
+  Fails on leftover placeholder text; warns on empty / title-less / wall-of-text
+  slides. JSON report, non-zero exit on error → drives the Step 8 loop. Requires `python-pptx`.
 
 ## Examples
 **Input:** "Turn this 6-page strategy memo into a 10-slide board deck."

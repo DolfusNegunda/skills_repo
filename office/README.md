@@ -14,6 +14,16 @@ structure, conventions, review rubrics, tone, checklists, and decision rules.
 Never re-solve OOXML or PDF internals; ride on top of the built-in capability and
 spend your effort on quality.
 
+**Where prose isn't enough, skills ship tested scripts.** For deterministic,
+mechanical checks a cheap model shouldn't have to reason through, document skills
+bundle a `scripts/` tool wired into their workflow: **validators** for producers
+(`engineering-excel-workbooks`, `authoring-word-documents`, `building-powerpoint-decks`)
+that drive a produce → validate → fix → re-validate loop, and **extractors** for
+processors (`processing-documents`, `processing-word-documents`,
+`processing-powerpoint-files`, `processing-excel-files`, `processing-pdf-documents`)
+that ingest deterministically and self-report fidelity. All are exercised by
+`skill-builder/scripts/smoke_test_scripts.py` in CI.
+
 ## Two families
 
 **Application skills** — how to operate a specific tool well:
