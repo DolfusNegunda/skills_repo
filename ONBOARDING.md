@@ -29,7 +29,11 @@ written down, not trapped in people's heads).
 
 ## What's been built (current status)
 
-**87 skills** across five areas, each validated (frontmatter, naming, links):
+**87 skills** across five areas, each validated (frontmatter, naming, links), plus a
+**determinism layer**: the document skills now ship **tested, runnable scripts** (not
+just guidance) that validate produced files and ingest incoming ones — so a cheap
+model runs a proven tool instead of improvising. All scripts are exercised
+automatically in CI.
 
 | Area | Count | Covers |
 |---|---|---|
@@ -41,6 +45,12 @@ written down, not trapped in people's heads).
 
 Plus your own document-branding and lessons-learned skills, generalized to work for
 any organization.
+
+**Quality has been benchmarked** against Anthropic's own published skills — the repo
+matches or exceeds them on breadth, discoverability, and consistency; the one axis
+they led on (executable, deterministic document tooling) has since been closed. See
+[docs/benchmark-vs-anthropic.md](docs/benchmark-vs-anthropic.md) and, for an
+independent re-check, [docs/REBENCHMARK-REQUEST.md](docs/REBENCHMARK-REQUEST.md).
 
 ## How it's used (two audiences)
 
@@ -73,9 +83,13 @@ review skills double as team quality rubrics.
 - **A validator** (`skill-builder/scripts/validate_skills.py`) checks every skill's
   frontmatter, naming, links, and uniqueness. A **GitHub Action** runs it on every
   change, so nothing broken merges.
+- **A smoke test** (`skill-builder/scripts/smoke_test_scripts.py`) generates real
+  files and runs every bundled document script, asserting each behaves as documented
+  — also enforced in CI, so the scripts can't silently rot.
 - **A generated index** (`skills-index.md`, via `generate_index.py`) can't drift from
   reality.
-- **House style + a worked example** keep every skill consistent and discoverable.
+- **House style, a determinism standard, and a worked example** keep every skill
+  consistent, discoverable, and — where it produces files — backed by a tested tool.
 
 ## How to contribute a skill
 
@@ -91,6 +105,11 @@ We've built a validated library of 87 reusable "how-to" skills so that cheaper A
 models (and people) can do office, document-processing, review, business-analysis,
 and research work to a consistent professional standard. An agent reads a lightweight
 index, picks the right skill for each request, and follows its baked-in procedure —
-cutting cost while holding quality. It's on GitHub, auto-validated on every change,
-and easy to extend. Best next steps: point the agent at real tasks to pressure-test
-quality, and pick a license so it can be shared.
+cutting cost while holding quality. Document work is backed by tested, deterministic
+scripts (validated in CI), and quality has been benchmarked against Anthropic's own
+skills. It's on GitHub, auto-checked on every change, and easy to extend. Best next
+steps: run a real-task pilot to *measure* the cost/quality win, pick a license so it
+can be shared, and commission the independent re-benchmark.
+
+For the fuller leadership briefing (business case, evidence, decisions to make), see
+[docs/LEAD-BRIEF.md](docs/LEAD-BRIEF.md).
