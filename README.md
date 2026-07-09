@@ -20,6 +20,10 @@ helper in everyday terms with example phrases to say. No commands or setup neede
 **Setting these up / maintaining the repo?** The technical catalog is
 **[docs/skills-library.html](docs/skills-library.html)**.
 
+**Want the whole map at a glance?** **[skills-index.md](skills-index.md)** is a
+flat, generated index of every skill (name, when to use, path) — regenerate it
+with `python skill-builder/scripts/generate_index.py`.
+
 ## Featured skills
 
 The meta-skill plus the original core communication/delivery skills (now part of
@@ -49,7 +53,7 @@ Each has its own README index and cross-links to the others.
 
 | Category | Skills | What it covers |
 |---|---|---|
-| **[office/](office/README.md)** | 36 | Word/Excel/PowerPoint, Outlook/Teams, Google Docs/Sheets/Slides, PDF/OCR/forms, the writing genres (reports, proposals, policies, technical docs, minutes, exec summaries), editing, proofreading, templates, mail merge, document automation, dashboards, presentation narrative, plus the core communication/delivery skills (business email, meeting-note & document summarization, status reports, change notes, data reports, branded-document rendering, brand guidelines). |
+| **[office/](office/README.md)** | 38 | Word/Excel/PowerPoint, Outlook/Teams, Google Docs/Sheets/Slides, PDF/OCR/forms, the writing genres (reports, proposals, policies, technical docs, minutes, exec summaries), editing, proofreading, templates, mail merge, document automation, dashboards, presentation narrative, plus the core communication/delivery skills (business email, meeting-note & document summarization, status reports, change notes, data reports, branded-document rendering, brand guidelines). |
 | **[review/](review/README.md)** | 15 | Structured, evidence-based review of documents, code, SQL, Python, architecture, requirements, business cases, presentations, contracts, policies, research, books, designs, and dashboards — all inheriting a shared severity/scoring model from `conducting-structured-reviews`. |
 | **[business/](business/README.md)** | 18 | Business analysis, requirements, process mapping, stakeholder analysis, risk registers, project planning, roadmaps, KPIs, OKRs, SWOT, cost-benefit, decision matrices, business cases, change management, governance, meeting facilitation, negotiation, and stakeholder communication. |
 | **[research/](research/README.md)** | 11 | Evidence collection, source credibility, fact verification, scientific reading, citation, literature reviews, comparative research, competitor analysis, market research, technology evaluation, and research synthesis. |
@@ -73,8 +77,9 @@ links, duplicates). See each category README for the full index and composition 
 .
 ├── README.md
 ├── docs/                                   # Catalog, rationale, design, HTML docs
+├── skills-index.md                         # Flat index of every skill (generated)
 ├── skill-builder/                          # Meta-skill + references/ + scripts/ + examples/
-├── office/                                 # 36 office-productivity skills (see office/README.md)
+├── office/                                 # 38 office-productivity skills (see office/README.md)
 ├── review/                                 # 15 structured-review skills (see review/README.md)
 ├── business/                               # 18 business-analysis/planning skills (see business/README.md)
 └── research/                               # 11 research skills (see research/README.md)
@@ -110,7 +115,8 @@ Every skill lives in a category folder (`office/`, `review/`, `business/`,
    category's README index.
 3. Run the mechanical gate: `python skill-builder/scripts/validate_skills.py`,
    then the human [authoring-checklist](skill-builder/references/authoring-checklist.md).
-4. Test it triggers on a realistic request, then open a PR.
+4. Regenerate the flat index: `python skill-builder/scripts/generate_index.py`.
+5. Test it triggers on a realistic request, then open a PR.
 
 ## Using these skills in Claude Code
 

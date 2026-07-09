@@ -63,6 +63,8 @@ spend your effort on quality.
 | [generating-data-reports](generating-data-reports/SKILL.md) | CSV + brief → a single self-contained HTML report with tables and charts. |
 | [producing-branded-documents](producing-branded-documents/SKILL.md) | Render branded Word/PDF from templates with per-client logos + a validation gate. |
 | [authoring-brand-guidelines](authoring-brand-guidelines/SKILL.md) | Create/maintain a human-facing brand style guide, kept in sync with the renderer's spec. |
+| [document-branding-standards](document-branding-standards/SKILL.md) | Org-agnostic branding-profile foundation (logo/template/header-footer as swappable data) for any document-type skill. |
+| [authoring-lessons-learned-docs](authoring-lessons-learned-docs/SKILL.md) | Generate a standardized Lessons Learned / retrospective `.docx` for any organization from a brand-agnostic template. |
 
 ## How they compose
 

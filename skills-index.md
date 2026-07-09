@@ -1,0 +1,118 @@
+# Skills Index
+
+Read this first. It maps every skill in this repo. Open a skill's `SKILL.md`
+(and its `references/`) only when the current task needs it — never load every
+skill's body up front.
+
+Regenerate after adding, moving, or renaming a skill:
+`python skill-builder/scripts/generate_index.py`
+
+**83 skills** across 5 groups.
+
+## Meta
+
+| Skill | When to use | Path |
+|---|---|---|
+| skill-builder | Use when the user wants to author a new skill, write or fix a SKILL.md, correct YAML frontmatter, structure references and supporting files, or asks "create a skill for X". | [skill-builder/SKILL.md](skill-builder/SKILL.md) |
+
+## Office
+
+| Skill | When to use | Path |
+|---|---|---|
+| authoring-brand-guidelines | Use when writing a brand guide, brand book, style guide, visual identity document, or updating brand standards after a rebrand. | [office/authoring-brand-guidelines/SKILL.md](office/authoring-brand-guidelines/SKILL.md) |
+| authoring-google-docs | Use when the user asks to "create a Google Doc", "write this in Docs", set up a collaborative document, or convert content into Docs. | [office/authoring-google-docs/SKILL.md](office/authoring-google-docs/SKILL.md) |
+| authoring-lessons-learned-docs | Use when the user asks to write, create, draft, or generate a lessons learned document, project retrospective, or post-project review, for any company or team deployment. | [office/authoring-lessons-learned-docs/SKILL.md](office/authoring-lessons-learned-docs/SKILL.md) |
+| authoring-word-documents | Use when the user asks to "create a Word doc", "write a report in Word", "format a .docx", generate a manual or contract, or needs a structured multi-page document. | [office/authoring-word-documents/SKILL.md](office/authoring-word-documents/SKILL.md) |
+| automating-document-generation | Use when the user asks to "automate document generation", "auto-generate reports/contracts", "produce documents from data", or build a repeatable document pipeline. | [office/automating-document-generation/SKILL.md](office/automating-document-generation/SKILL.md) |
+| building-document-templates | Use when the user asks to "create a template", "make this reusable", "build a standard format", or turn a one-off document into a repeatable one. | [office/building-document-templates/SKILL.md](office/building-document-templates/SKILL.md) |
+| building-google-slides | Use when the user asks to "make Google Slides", "create a presentation in Slides", or turn content into a collaborative deck. | [office/building-google-slides/SKILL.md](office/building-google-slides/SKILL.md) |
+| building-powerpoint-decks | Use when the user asks to "make a PowerPoint", "create slides / a deck", "turn this into a presentation", or build a pitch/board/training deck. | [office/building-powerpoint-decks/SKILL.md](office/building-powerpoint-decks/SKILL.md) |
+| collaborating-in-teams | Use when the user asks to "organize Teams", "set up channels", improve Teams meetings or communication, or decide where a conversation belongs. | [office/collaborating-in-teams/SKILL.md](office/collaborating-in-teams/SKILL.md) |
+| comparing-documents | Use when the user asks to "compare these documents", "what changed between these versions", "diff these files/contracts", "redline this", or review edits between drafts. | [office/comparing-documents/SKILL.md](office/comparing-documents/SKILL.md) |
+| crafting-presentation-narratives | Use when the user asks to "structure my presentation", "what should my deck say", "help me tell this story", "my presentation doesn't land", or is preparing a pitch/talk. | [office/crafting-presentation-narratives/SKILL.md](office/crafting-presentation-narratives/SKILL.md) |
+| designing-dashboards | Use when the user asks to "design/build a dashboard", "create a KPI/reporting view", "visualize these metrics", or improve a cluttered dashboard. | [office/designing-dashboards/SKILL.md](office/designing-dashboards/SKILL.md) |
+| designing-forms | Use when the user asks to "create a form/survey/questionnaire", "design an intake form", or improve a form's response quality. | [office/designing-forms/SKILL.md](office/designing-forms/SKILL.md) |
+| document-branding-standards | Use this as the shared foundation before building or using any document-type skill (lessons learned, change notes, signoffs, presentations), and use its onboarding procedure when adding support for a new organization. | [office/document-branding-standards/SKILL.md](office/document-branding-standards/SKILL.md) |
+| drafting-business-email | Use when writing an email, replying to a thread, following up or chasing a response, declining a request, apologising for a delay, escalating an issue, making a cold introduction, or polishing a rough email draft. | [office/drafting-business-email/SKILL.md](office/drafting-business-email/SKILL.md) |
+| editing-prose | Use when the user asks to "edit this", "improve/tighten this writing", "make it flow/clearer/shorter", or "rewrite for tone". | [office/editing-prose/SKILL.md](office/editing-prose/SKILL.md) |
+| engineering-excel-workbooks | Use when the user asks to "build an Excel spreadsheet", "create a model/tracker/calculator", "write a formula", fix a broken workbook, or turn data into an .xlsx. | [office/engineering-excel-workbooks/SKILL.md](office/engineering-excel-workbooks/SKILL.md) |
+| engineering-google-sheets | Use when the user asks to "build a Google Sheet", "write a Sheets formula", create a collaborative tracker/model, or turn data into Sheets. | [office/engineering-google-sheets/SKILL.md](office/engineering-google-sheets/SKILL.md) |
+| engineering-spreadsheets | Use when the user asks to "design/structure a model", "build a financial/forecast model", "my spreadsheet is a mess", or needs modeling best practices before implementation. | [office/engineering-spreadsheets/SKILL.md](office/engineering-spreadsheets/SKILL.md) |
+| extracting-text-with-ocr | Use when the user asks to "OCR this", "extract text from a scan/image/photo", "read this receipt/invoice/ID", or turn a picture of a document into editable text or data. | [office/extracting-text-with-ocr/SKILL.md](office/extracting-text-with-ocr/SKILL.md) |
+| formatting-documents | Use when the user asks to "format this", "make it look professional/consistent", "clean up the formatting", or fix inconsistent styling. | [office/formatting-documents/SKILL.md](office/formatting-documents/SKILL.md) |
+| generating-data-reports | Use when asked to generate a data report, summarize or visualize a CSV, analyze tabular data, or produce a shareable one-file HTML analysis from a spreadsheet export. | [office/generating-data-reports/SKILL.md](office/generating-data-reports/SKILL.md) |
+| managing-outlook-mail | Use when the user asks to "organize my inbox", "set up Outlook rules/folders", "manage my email", handle calendar/scheduling in Outlook, or reduce email overload. | [office/managing-outlook-mail/SKILL.md](office/managing-outlook-mail/SKILL.md) |
+| processing-pdf-documents | Use when the user asks to "extract text/data from a PDF", "split/merge/combine PDFs", "fill a PDF form", "redact a PDF", or process/convert PDF documents. | [office/processing-pdf-documents/SKILL.md](office/processing-pdf-documents/SKILL.md) |
+| producing-branded-documents | Use when creating a weekly project update, status report, or any client-facing document that must follow the company's standard look with the correct client logo. | [office/producing-branded-documents/SKILL.md](office/producing-branded-documents/SKILL.md) |
+| proofreading-text | Use when the user asks to "proofread", "check for typos/errors", "final pass", or "check grammar" on near-final text. | [office/proofreading-text/SKILL.md](office/proofreading-text/SKILL.md) |
+| recording-meeting-minutes | Use when the user asks to "write meeting minutes", "formal minutes", "board/committee minutes", or a governance-grade record of a meeting. | [office/recording-meeting-minutes/SKILL.md](office/recording-meeting-minutes/SKILL.md) |
+| running-mail-merge | Use when the user asks to "do a mail merge", "generate personalized letters/certificates/labels", "create documents for each row", or bulk-personalize from a spreadsheet. | [office/running-mail-merge/SKILL.md](office/running-mail-merge/SKILL.md) |
+| summarizing-documents | Use when the user asks to summarize, condense, review, or extract key points, risks, obligations, or answers from a document or PDF. | [office/summarizing-documents/SKILL.md](office/summarizing-documents/SKILL.md) |
+| summarizing-meeting-notes | Use when asked to summarize a meeting, clean up meeting notes, extract action items or decisions from a transcript, or produce meeting minutes or a recap. | [office/summarizing-meeting-notes/SKILL.md](office/summarizing-meeting-notes/SKILL.md) |
+| writing-business-prose | Use when the user asks to "write this professionally", "make this clearer", "draft a memo/announcement/update", or improve workplace writing. | [office/writing-business-prose/SKILL.md](office/writing-business-prose/SKILL.md) |
+| writing-change-notes | Use when asked to write release notes, a changelog entry, a change announcement, or a change communication for a process or policy update. | [office/writing-change-notes/SKILL.md](office/writing-change-notes/SKILL.md) |
+| writing-executive-summaries | Use when the user asks for an "executive summary", "TL;DR for leadership", "one-pager", "board summary", or to summarize a document for executives. | [office/writing-executive-summaries/SKILL.md](office/writing-executive-summaries/SKILL.md) |
+| writing-policies | Use when the user asks to "write a policy", "draft a procedure/SOP/standard", document rules or governance, or improve an existing policy. | [office/writing-policies/SKILL.md](office/writing-policies/SKILL.md) |
+| writing-proposals | Use when the user asks to "write a proposal", "draft an SOW", "respond to an RFP", or create a pitch/bid document. | [office/writing-proposals/SKILL.md](office/writing-proposals/SKILL.md) |
+| writing-reports | Use when the user asks to "write a report", "create a status/analysis/research report", "put this analysis into a report", or turn findings into a structured document. | [office/writing-reports/SKILL.md](office/writing-reports/SKILL.md) |
+| writing-status-reports | Use when writing a weekly status report, project update, RAG status, team roll-up, or the content for a client-facing progress report. | [office/writing-status-reports/SKILL.md](office/writing-status-reports/SKILL.md) |
+| writing-technical-documentation | Use when the user asks to "write documentation", "document this API/system/process", "write a README/runbook/how-to guide", or improve existing docs. | [office/writing-technical-documentation/SKILL.md](office/writing-technical-documentation/SKILL.md) |
+
+## Review
+
+| Skill | When to use | Path |
+|---|---|---|
+| conducting-structured-reviews | Use when the user asks to "review", "assess", "evaluate", "critique", or "give feedback on" any artifact, or as the foundation for a domain-specific review (code, documents, architecture, etc.). | [review/conducting-structured-reviews/SKILL.md](review/conducting-structured-reviews/SKILL.md) |
+| reviewing-architecture | Use when the user asks to "review this architecture/design", "assess this system design", "critique this technical proposal", or evaluate an architecture before build. | [review/reviewing-architecture/SKILL.md](review/reviewing-architecture/SKILL.md) |
+| reviewing-books | Use when the user asks to "review my book/manuscript/chapter", "give feedback on this long-form draft", "developmental edit", or assess a book before publishing. | [review/reviewing-books/SKILL.md](review/reviewing-books/SKILL.md) |
+| reviewing-business-cases | Use when the user asks to "review this business case", "assess this investment/proposal", "sanity-check these numbers", or evaluate a funding ask. | [review/reviewing-business-cases/SKILL.md](review/reviewing-business-cases/SKILL.md) |
+| reviewing-code | Use when the user asks to "review this code", "do a code review", "check this PR/diff", or assess code quality before merge. | [review/reviewing-code/SKILL.md](review/reviewing-code/SKILL.md) |
+| reviewing-contracts | Use when the user asks to "review this contract/agreement/SOW/NDA", "what am I agreeing to", "flag risky clauses", or check terms before signing. | [review/reviewing-contracts/SKILL.md](review/reviewing-contracts/SKILL.md) |
+| reviewing-dashboards | Use when the user asks to "review this dashboard/report", "is this chart right", "why is this dashboard confusing", or assess a data view before it ships. | [review/reviewing-dashboards/SKILL.md](review/reviewing-dashboards/SKILL.md) |
+| reviewing-designs | Use when the user asks to "review this design/mockup/UI/wireframe", "usability review", "accessibility check", or critique a screen/flow before build. | [review/reviewing-designs/SKILL.md](review/reviewing-designs/SKILL.md) |
+| reviewing-documents | Use when the user asks to "review this document", "give feedback on this doc/report/memo", "critique my writing", or check a document before it ships. | [review/reviewing-documents/SKILL.md](review/reviewing-documents/SKILL.md) |
+| reviewing-policies | Use when the user asks to "review this policy/procedure/SOP", "is this policy enforceable", "check this against regulation", or assess a policy before publication. | [review/reviewing-policies/SKILL.md](review/reviewing-policies/SKILL.md) |
+| reviewing-presentations | Use when the user asks to "review my deck/presentation/slides", "give feedback on this pitch", or check a deck before presenting. | [review/reviewing-presentations/SKILL.md](review/reviewing-presentations/SKILL.md) |
+| reviewing-python | Use when the user asks to "review this Python", "is this Pythonic", "check my Python code", or assess a Python module/package before merge. | [review/reviewing-python/SKILL.md](review/reviewing-python/SKILL.md) |
+| reviewing-requirements | Use when the user asks to "review these requirements", "check this spec/user story", "are these testable", or assess requirements before build. | [review/reviewing-requirements/SKILL.md](review/reviewing-requirements/SKILL.md) |
+| reviewing-research | Use when the user asks to "review this research/study/analysis", "critique this methodology", "does the data support this claim", or assess a report's rigor. | [review/reviewing-research/SKILL.md](review/reviewing-research/SKILL.md) |
+| reviewing-sql | Use when the user asks to "review this SQL", "check this query", "why is this query slow", or assess a schema/migration before running it. | [review/reviewing-sql/SKILL.md](review/reviewing-sql/SKILL.md) |
+
+## Business
+
+| Skill | When to use | Path |
+|---|---|---|
+| analyzing-cost-benefit | Use when the user asks to "do a cost-benefit analysis", "is this worth it", "calculate ROI/NPV/payback", or compare the economics of options. | [business/analyzing-cost-benefit/SKILL.md](business/analyzing-cost-benefit/SKILL.md) |
+| analyzing-stakeholders | Use when the user asks to "do a stakeholder analysis", "map stakeholders", "who do we need to manage/engage", or plan communication and buy-in for a project or change. | [business/analyzing-stakeholders/SKILL.md](business/analyzing-stakeholders/SKILL.md) |
+| building-decision-matrices | Use when the user asks to "compare these options", "make a decision matrix", "help me choose between", "weighted scoring", or evaluate alternatives against multiple criteria. | [business/building-decision-matrices/SKILL.md](business/building-decision-matrices/SKILL.md) |
+| building-roadmaps | Use when the user asks to "create a roadmap", "build a product/strategy/tech roadmap", "show what we're doing when", or plan initiatives across quarters. | [business/building-roadmaps/SKILL.md](business/building-roadmaps/SKILL.md) |
+| communicating-with-stakeholders | Use when the user asks to "create a communication plan", "how do I communicate this to X", "keep stakeholders informed", or manage messaging for a project, change, or decision. | [business/communicating-with-stakeholders/SKILL.md](business/communicating-with-stakeholders/SKILL.md) |
+| defining-kpis | Use when the user asks to "define KPIs", "what metrics should we track", "set up performance measures", or fix vanity/gameable metrics. | [business/defining-kpis/SKILL.md](business/defining-kpis/SKILL.md) |
+| establishing-governance | Use when the user asks to "set up governance", "define decision rights", "who decides what", "create a steering committee/operating model", or fix unclear or slow decision-making. | [business/establishing-governance/SKILL.md](business/establishing-governance/SKILL.md) |
+| facilitating-meetings | Use when the user asks to "plan a meeting/workshop", "facilitate a session", "make our meetings more productive", or run a decision/brainstorming/planning session. | [business/facilitating-meetings/SKILL.md](business/facilitating-meetings/SKILL.md) |
+| gathering-requirements | Use when the user asks to "gather/elicit requirements", "write requirements/user stories", "capture what the business needs", or turn stakeholder input into a spec. | [business/gathering-requirements/SKILL.md](business/gathering-requirements/SKILL.md) |
+| maintaining-risk-registers | Use when the user asks to "create a risk register", "do a risk assessment", "identify project risks", or track and manage risks. | [business/maintaining-risk-registers/SKILL.md](business/maintaining-risk-registers/SKILL.md) |
+| managing-change | Use when the user asks to "manage this change", "plan a rollout/adoption", "help people adopt X", or reduce resistance to a new system/process/structure. | [business/managing-change/SKILL.md](business/managing-change/SKILL.md) |
+| mapping-processes | Use when the user asks to "map this process", "document our workflow", "create a process/swimlane diagram", "find inefficiencies", or improve how work flows. | [business/mapping-processes/SKILL.md](business/mapping-processes/SKILL.md) |
+| negotiating-agreements | Use when the user asks to "help me negotiate", "prepare for a negotiation", "what's my BATNA", "negotiation strategy", or plan for a deal/salary/contract discussion. | [business/negotiating-agreements/SKILL.md](business/negotiating-agreements/SKILL.md) |
+| performing-business-analysis | Use when the user asks to "analyze this business problem", "figure out what's going wrong", "do a business analysis", or turn a vague concern into a structured case for action. | [business/performing-business-analysis/SKILL.md](business/performing-business-analysis/SKILL.md) |
+| planning-projects | Use when the user asks to "plan this project", "create a project plan/charter", "define scope and milestones", or turn an initiative into an executable plan. | [business/planning-projects/SKILL.md](business/planning-projects/SKILL.md) |
+| running-swot-analysis | Use when the user asks to "do a SWOT", "analyze strengths and weaknesses", "assess our strategic position", or evaluate options strategically. | [business/running-swot-analysis/SKILL.md](business/running-swot-analysis/SKILL.md) |
+| setting-okrs | Use when the user asks to "set OKRs", "write objectives and key results", "define quarterly goals", or fix OKRs that are really task lists. | [business/setting-okrs/SKILL.md](business/setting-okrs/SKILL.md) |
+| writing-business-cases | Use when the user asks to "write a business case", "justify this investment", "make the case for", or prepare a funding/approval request. | [business/writing-business-cases/SKILL.md](business/writing-business-cases/SKILL.md) |
+
+## Research
+
+| Skill | When to use | Path |
+|---|---|---|
+| analyzing-competitors | Use when the user asks to "do a competitive analysis", "analyze our competitors", "how do we compare to", or map a market's players. | [research/analyzing-competitors/SKILL.md](research/analyzing-competitors/SKILL.md) |
+| assessing-source-credibility | Use when the user asks to "is this source reliable/credible", "evaluate this source", "can I trust this", or vet sources before citing them. | [research/assessing-source-credibility/SKILL.md](research/assessing-source-credibility/SKILL.md) |
+| citing-sources | Use when the user asks to "cite this", "format references/bibliography", "which citation style", "add citations", or check attribution. | [research/citing-sources/SKILL.md](research/citing-sources/SKILL.md) |
+| collecting-evidence | Use when the user asks to "gather evidence/sources", "research this question", "find support for", or build an evidence base before analysis. | [research/collecting-evidence/SKILL.md](research/collecting-evidence/SKILL.md) |
+| conducting-comparative-research | Use when the user asks to "compare X and Y", "which is better", "do a comparison of", or evaluate alternatives side by side. | [research/conducting-comparative-research/SKILL.md](research/conducting-comparative-research/SKILL.md) |
+| conducting-literature-reviews | Use when the user asks to "do a literature review", "review the research on", "what does the literature say", or survey existing work on a topic. | [research/conducting-literature-reviews/SKILL.md](research/conducting-literature-reviews/SKILL.md) |
+| conducting-market-research | Use when the user asks to "do market research", "size this market", "who are the customers", "is there demand for", or assess a market opportunity. | [research/conducting-market-research/SKILL.md](research/conducting-market-research/SKILL.md) |
+| evaluating-technology | Use when the user asks to "evaluate this technology/tool/framework", "should we use X", "tech selection", or assess a platform before adopting. | [research/evaluating-technology/SKILL.md](research/evaluating-technology/SKILL.md) |
+| reading-scientific-papers | Use when the user asks to "read/summarize this paper", "explain this study", "what does this research say", or extract findings from academic literature. | [research/reading-scientific-papers/SKILL.md](research/reading-scientific-papers/SKILL.md) |
+| synthesizing-research | Use when the user asks to "synthesize this research", "pull these sources together", "what's the overall takeaway", or turn gathered evidence into conclusions. | [research/synthesizing-research/SKILL.md](research/synthesizing-research/SKILL.md) |
+| verifying-facts | Use when the user asks to "fact-check this", "verify this claim/statistic", "is this true", or check accuracy before publishing. | [research/verifying-facts/SKILL.md](research/verifying-facts/SKILL.md) |

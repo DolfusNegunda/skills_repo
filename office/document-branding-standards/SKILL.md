@@ -1,6 +1,6 @@
 ---
 name: document-branding-standards
-description: Define and apply a company's document branding profile (logo, header/footer, base template) so standardized process documents can be generated for any organization without hardcoding one company's branding. Use as the shared foundation before building or using any document-type skill (lessons learned, change notes, signoffs, presentations), and use its onboarding procedure when adding support for a new organization.
+description: Define and apply a company's document branding profile (logo, header/footer, base template) so standardized process documents can be generated for any organization without hardcoding one company's branding. Use this as the shared foundation before building or using any document-type skill (lessons learned, change notes, signoffs, presentations), and use its onboarding procedure when adding support for a new organization.
 ---
 
 # Document Branding Standards
