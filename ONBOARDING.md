@@ -29,7 +29,7 @@ written down, not trapped in people's heads).
 
 ## What's been built (current status)
 
-**101 skills** across six areas, each validated (frontmatter, naming, links), plus a
+**115 skills** across seven areas, each validated (frontmatter, naming, links), plus a
 **determinism layer**: the document skills now ship **tested, runnable scripts** (not
 just guidance) that validate produced files and ingest incoming ones — so a cheap
 model runs a proven tool instead of improvising. All scripts are exercised
@@ -42,6 +42,7 @@ automatically in CI.
 | [business/](business/README.md) | 18 | Analysis, requirements, process mapping, stakeholders, risk, project planning, roadmaps, KPIs/OKRs, SWOT, cost-benefit, decision matrices, business cases, change, governance, facilitation, negotiation |
 | [research/](research/README.md) | 11 | Evidence collection, source credibility, fact-checking, scientific reading, citation, literature/comparative/market research, tech evaluation, synthesis |
 | [software-engineering/](software-engineering/README.md) | 14 | Implementing features, debugging, testing, refactoring, API design, patterns, Git, dependencies, packaging/release, performance, error handling, secure coding, SQL authoring |
+| [data-engineering/](data-engineering/README.md) | 14 | Pipeline design, lakehouse & dimensional modeling, batch/streaming, incremental/CDC, orchestration, data quality, governance & lineage, schema evolution, Spark/warehouse performance, cost, observability |
 | [skill-builder/](skill-builder/SKILL.md) | 1 | The meta-skill: how to author new skills in house style |
 
 Plus your own document-branding and lessons-learned skills, generalized to work for

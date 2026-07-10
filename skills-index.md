@@ -7,7 +7,7 @@ skill's body up front.
 Regenerate after adding, moving, or renaming a skill:
 `python skill-builder/scripts/generate_index.py`
 
-**101 skills** across 6 groups.
+**115 skills** across 7 groups.
 
 ## Meta
 
@@ -139,3 +139,22 @@ Regenerate after adding, moving, or renaming a skill:
 | using-git-workflows | Use when the user asks to "structure my commits", "write a good commit message", "rebase or merge?", "fix this merge conflict", "undo a bad commit", or "how should I branch for this work". | [software-engineering/using-git-workflows/SKILL.md](software-engineering/using-git-workflows/SKILL.md) |
 | writing-automated-tests | Use when the user says "write tests for this", "add unit tests", "how do I test this", "improve test coverage", or is choosing between unit, integration, and end-to-end tests. | [software-engineering/writing-automated-tests/SKILL.md](software-engineering/writing-automated-tests/SKILL.md) |
 | writing-secure-code | Use when the user asks to "make this secure", "prevent SQL injection/XSS", "handle auth", "store secrets/passwords safely", or harden a feature that touches user input, credentials, or external systems. | [software-engineering/writing-secure-code/SKILL.md](software-engineering/writing-secure-code/SKILL.md) |
+
+## Data Engineering
+
+| Skill | When to use | Path |
+|---|---|---|
+| architecting-lakehouses | Use when the user says "design a lakehouse", "set up bronze/silver/gold", "Delta vs Iceberg", "too many small files", "my Spark reads are slow on the lake", or "how do I lay out these tables". | [data-engineering/architecting-lakehouses/SKILL.md](data-engineering/architecting-lakehouses/SKILL.md) |
+| building-batch-transformations | Use when the user asks to "build an ETL job", "write a dbt model", "transform this data in batch", "why did my rerun double the rows", or needs a scheduled batch pipeline that can be replayed without corruption. | [data-engineering/building-batch-transformations/SKILL.md](data-engineering/building-batch-transformations/SKILL.md) |
+| building-streaming-pipelines | Use when the user asks to "build a streaming pipeline", "process Kafka events", "set a watermark", "handle late data", "why is my streaming state growing", or "how do I get exactly-once". | [data-engineering/building-streaming-pipelines/SKILL.md](data-engineering/building-streaming-pipelines/SKILL.md) |
+| designing-data-pipelines | Use when the user says "design a data pipeline", "batch or streaming?", "how do I make this reload safe", "how do I backfill", or "we get duplicate/missing rows". | [data-engineering/designing-data-pipelines/SKILL.md](data-engineering/designing-data-pipelines/SKILL.md) |
+| ensuring-data-quality | Use when the user says "add data quality checks", "validate this data", "Great Expectations / dbt tests", "set a data contract", "why did bad rows reach prod", or "the numbers look wrong". | [data-engineering/ensuring-data-quality/SKILL.md](data-engineering/ensuring-data-quality/SKILL.md) |
+| governing-data-and-lineage | Use when the user says "set up a data catalog", "we need data lineage", "who owns this table", "classify our PII", "lock down access", or "nobody can trace where this data came from". | [data-engineering/governing-data-and-lineage/SKILL.md](data-engineering/governing-data-and-lineage/SKILL.md) |
+| implementing-incremental-loading | Use when the user asks to "load only new rows", "set up CDC", "write an incremental model", "do an upsert/MERGE", "capture deletes", or "why did my incremental load miss rows". | [data-engineering/implementing-incremental-loading/SKILL.md](data-engineering/implementing-incremental-loading/SKILL.md) |
+| managing-schema-evolution | Use when the user says "I need to change this schema", "will this break downstream", "add a column safely", "rename/drop a field", "version this table", or "our schema keeps drifting". | [data-engineering/managing-schema-evolution/SKILL.md](data-engineering/managing-schema-evolution/SKILL.md) |
+| modeling-dimensional-warehouses | Use when the user says "design a star schema", "what's the grain of this fact", "how do I track history on this dimension", "SCD type 2", "build a dimensional model", or "fact vs dimension". | [data-engineering/modeling-dimensional-warehouses/SKILL.md](data-engineering/modeling-dimensional-warehouses/SKILL.md) |
+| observing-data-pipelines | Use when the user says "our data is stale and nobody noticed", "set up data monitoring/observability", "define an SLA for this table", "we got alert fatigue", or "trace what broke this dashboard". | [data-engineering/observing-data-pipelines/SKILL.md](data-engineering/observing-data-pipelines/SKILL.md) |
+| optimizing-data-costs | Use when the user says "our warehouse bill is too high", "why is this query so expensive", "we're paying for idle compute", "reduce Snowflake/BigQuery/Databricks cost", or "who owns this spend". | [data-engineering/optimizing-data-costs/SKILL.md](data-engineering/optimizing-data-costs/SKILL.md) |
+| optimizing-spark-jobs | Use when the user says "my Spark job is slow", "reduce shuffle", "Spark OOM", "one task takes forever", or "why is this stage stuck". | [data-engineering/optimizing-spark-jobs/SKILL.md](data-engineering/optimizing-spark-jobs/SKILL.md) |
+| orchestrating-data-workflows | Use when the user says "schedule this pipeline", "build the DAG", "set up Airflow/Dagster/ADF", "add a backfill", "wire task dependencies", or "these jobs run in the wrong order". | [data-engineering/orchestrating-data-workflows/SKILL.md](data-engineering/orchestrating-data-workflows/SKILL.md) |
+| tuning-warehouse-performance | Use when the user says "why is this warehouse query slow", "cut our compute cost", "it's scanning the whole table", or "our Snowflake/BigQuery bill is too high". | [data-engineering/tuning-warehouse-performance/SKILL.md](data-engineering/tuning-warehouse-performance/SKILL.md) |
