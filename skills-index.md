@@ -7,7 +7,7 @@ skill's body up front.
 Regenerate after adding, moving, or renaming a skill:
 `python skill-builder/scripts/generate_index.py`
 
-**129 skills** across 8 groups.
+**141 skills** across 9 groups.
 
 ## Meta
 
@@ -177,3 +177,20 @@ Regenerate after adding, moving, or renaming a skill:
 | integrating-tool-use | Use when the user asks to "add tools to my agent", "define a function schema", fix a model that calls the wrong tool or passes bad arguments, or make tool calls safe and robust. | [ai-engineering/integrating-tool-use/SKILL.md](ai-engineering/integrating-tool-use/SKILL.md) |
 | managing-agent-memory | Use when the user asks to "add memory to my agent", "remember across sessions", compact a growing conversation, or fix an agent that forgets, repeats itself, or acts on outdated facts. | [ai-engineering/managing-agent-memory/SKILL.md](ai-engineering/managing-agent-memory/SKILL.md) |
 | managing-context-windows | Use when input is "too long for the context", "hitting token limits", "the model ignores the middle", "truncating my prompt", or costs/latency climb with prompt size. | [ai-engineering/managing-context-windows/SKILL.md](ai-engineering/managing-context-windows/SKILL.md) |
+
+## Reasoning & Decision-Making
+
+| Skill | When to use | Path |
+|---|---|---|
+| analyzing-gaps | Use when the user says "where are we vs where we want to be", "what's missing to hit the target", "gap analysis", "assess our maturity against X", or has a concrete target and needs the delta and the actions to close it. | [reasoning/analyzing-gaps/SKILL.md](reasoning/analyzing-gaps/SKILL.md) |
+| analyzing-root-causes | Use when the user says "why does this keep happening", "we keep firefighting the same issue", "find the root cause", "get to the bottom of this", or a fix that treated a symptom failed. | [reasoning/analyzing-root-causes/SKILL.md](reasoning/analyzing-root-causes/SKILL.md) |
+| analyzing-tradeoffs | Use when a decision has two or more viable paths that pull against each other — speed vs quality, build vs buy, cost vs flexibility — and someone asks "which should we pick and why" or "what are the tradeoffs here". | [reasoning/analyzing-tradeoffs/SKILL.md](reasoning/analyzing-tradeoffs/SKILL.md) |
+| deciding-under-uncertainty | Use when a decision must be made before the facts are in, when outcomes are probabilistic, or when someone asks "what should we do given we don't know X". | [reasoning/deciding-under-uncertainty/SKILL.md](reasoning/deciding-under-uncertainty/SKILL.md) |
+| decomposing-problems | Use when the user says "this is too big to tackle", "where do I even start", "break this down", "structure this problem", or faces a sprawling question with no obvious entry point. | [reasoning/decomposing-problems/SKILL.md](reasoning/decomposing-problems/SKILL.md) |
+| detecting-fallacies-and-inconsistencies | Use when someone says "poke holes in this", "does this argument hold up", "find the flaws", "is this logic sound", or hands over a case/memo to stress-test. | [reasoning/detecting-fallacies-and-inconsistencies/SKILL.md](reasoning/detecting-fallacies-and-inconsistencies/SKILL.md) |
+| estimating-under-uncertainty | Use when the user asks "roughly how much/many/long", "ballpark this", "we don't have exact numbers but", "order of magnitude", or needs a number to decide with before full data exists. | [reasoning/estimating-under-uncertainty/SKILL.md](reasoning/estimating-under-uncertainty/SKILL.md) |
+| identifying-constraints | Use when progress is capped despite effort, when a plan feels blocked, or when someone asks "what's really holding this back" or "where is the bottleneck". | [reasoning/identifying-constraints/SKILL.md](reasoning/identifying-constraints/SKILL.md) |
+| planning-scenarios | Use when the user asks to "plan for different scenarios", "what if X happens", "stress-test the plan", "best/worst case", or faces a decision whose outcome hinges on unknowns outside their control. | [reasoning/planning-scenarios/SKILL.md](reasoning/planning-scenarios/SKILL.md) |
+| prioritizing-options | Use when the user asks to "prioritize this backlog", "what should we do first", "rank these features", "sequence the roadmap", or has more work than capacity. | [reasoning/prioritizing-options/SKILL.md](reasoning/prioritizing-options/SKILL.md) |
+| testing-hypotheses | Use when someone says "I think X is happening", "let's test whether", "is this actually true", "prove/disprove this theory", or wants to check an assumption before betting on it. | [reasoning/testing-hypotheses/SKILL.md](reasoning/testing-hypotheses/SKILL.md) |
+| thinking-in-systems | Use when someone says "why does this keep coming back", "what are the ripple effects", "map the feedback loops", "what happens downstream if we change X", or a fix in one place keeps breaking another. | [reasoning/thinking-in-systems/SKILL.md](reasoning/thinking-in-systems/SKILL.md) |
