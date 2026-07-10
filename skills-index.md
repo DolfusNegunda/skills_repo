@@ -7,7 +7,7 @@ skill's body up front.
 Regenerate after adding, moving, or renaming a skill:
 `python skill-builder/scripts/generate_index.py`
 
-**141 skills** across 9 groups.
+**151 skills** across 10 groups.
 
 ## Meta
 
@@ -194,3 +194,18 @@ Regenerate after adding, moving, or renaming a skill:
 | prioritizing-options | Use when the user asks to "prioritize this backlog", "what should we do first", "rank these features", "sequence the roadmap", or has more work than capacity. | [reasoning/prioritizing-options/SKILL.md](reasoning/prioritizing-options/SKILL.md) |
 | testing-hypotheses | Use when someone says "I think X is happening", "let's test whether", "is this actually true", "prove/disprove this theory", or wants to check an assumption before betting on it. | [reasoning/testing-hypotheses/SKILL.md](reasoning/testing-hypotheses/SKILL.md) |
 | thinking-in-systems | Use when someone says "why does this keep coming back", "what are the ripple effects", "map the feedback loops", "what happens downstream if we change X", or a fix in one place keeps breaking another. | [reasoning/thinking-in-systems/SKILL.md](reasoning/thinking-in-systems/SKILL.md) |
+
+## Productivity
+
+| Skill | When to use | Path |
+|---|---|---|
+| breaking-down-tasks | Use when a task feels too large to start, a to-do reads as a fuzzy outcome instead of an action, work stalls because the next move is unclear, or a plan needs its next physical actions spelled out. | [productivity/breaking-down-tasks/SKILL.md](productivity/breaking-down-tasks/SKILL.md) |
+| keeping-decision-journals | Use when the user says "start a decision journal", "log this decision", "how do I track decisions I make", or wants to learn from past calls instead of misremembering them. | [productivity/keeping-decision-journals/SKILL.md](productivity/keeping-decision-journals/SKILL.md) |
+| managing-personal-knowledge | Use when notes pile up unfindable, when setting up a note vault or personal wiki, when choosing an organization scheme, or when past research keeps getting lost. | [productivity/managing-personal-knowledge/SKILL.md](productivity/managing-personal-knowledge/SKILL.md) |
+| managing-tasks | Use when the user says "organize my tasks", "set up a to-do system", "I keep forgetting things", "my task list is a mess", or wants one place they trust for everything. | [productivity/managing-tasks/SKILL.md](productivity/managing-tasks/SKILL.md) |
+| managing-time | Use when the user says "I keep losing focus", "I'm always busy but nothing gets done", "help me stop context-switching", "protect my focus time", or wants to defend deep work from interruptions and meetings. | [productivity/managing-time/SKILL.md](productivity/managing-time/SKILL.md) |
+| planning-learning | Use when the user says "help me learn X", "make a study plan / roadmap for Y", "how do I get good at Z", "what should I learn first", or hands over a subject to structure into a learning path. | [productivity/planning-learning/SKILL.md](productivity/planning-learning/SKILL.md) |
+| planning-your-day | Use when the user says "plan my day", "plan my week", "help me structure tomorrow", "I have too much to do", or wants a realistic schedule instead of an overloaded to-do list. | [productivity/planning-your-day/SKILL.md](productivity/planning-your-day/SKILL.md) |
+| setting-and-tracking-goals | Use when the user says "set a goal", "how do I stick to my goals", "track my progress", or wants a personal goal that survives past the first week. | [productivity/setting-and-tracking-goals/SKILL.md](productivity/setting-and-tracking-goals/SKILL.md) |
+| studying-effectively | Use when the user says "help me study X", "how do I remember this", "I keep forgetting what I read", "study for an exam", or wants to actually retain material instead of just reviewing it. | [productivity/studying-effectively/SKILL.md](productivity/studying-effectively/SKILL.md) |
+| taking-notes | Use when taking notes from reading, a lecture, a talk, or self-study, or when notes get captured but never revisited or turned into anything. | [productivity/taking-notes/SKILL.md](productivity/taking-notes/SKILL.md) |

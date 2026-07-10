@@ -61,6 +61,7 @@ Each has its own README index and cross-links to the others.
 | **[data-engineering/](data-engineering/README.md)** | 14 | Pipeline design, lakehouse architecture, dimensional modeling, batch/streaming transformation, incremental loading & CDC, orchestration, data quality, governance & lineage, schema evolution, Spark & warehouse performance, cost optimization, and pipeline observability. |
 | **[ai-engineering/](ai-engineering/README.md)** | 14 | Prompt engineering, prompt/output evaluation, context management, RAG, chunking & embeddings, vector search, agent systems, tool use, agent memory, structured outputs (with a tested JSON validator), LLM evaluation, guardrails, hallucination detection, and AI system design. |
 | **[reasoning/](reasoning/README.md)** | 12 | Problem decomposition, root-cause analysis, gap analysis, constraint analysis, tradeoff analysis, deciding under uncertainty, prioritization, estimation, scenario planning, hypothesis testing, systems thinking, and fallacy/inconsistency detection — the thinking methods the other categories rely on. |
+| **[productivity/](productivity/README.md)** | 10 | Daily/weekly planning, task management, time & focus management, task breakdown, personal knowledge management, note-taking, decision journaling, goal setting & tracking, learning plans, and effective study methods. |
 
 Each skill is a thin house-style layer that adds *what good looks like* — structure,
 rubrics, checklists, decision rules — and cross-links to related skills. All skills
@@ -90,7 +91,8 @@ links, duplicates). See each category README for the full index and composition 
 ├── software-engineering/                   # 14 software-engineering skills (see software-engineering/README.md)
 ├── data-engineering/                       # 14 data-engineering skills (see data-engineering/README.md)
 ├── ai-engineering/                         # 14 AI-engineering skills (see ai-engineering/README.md)
-└── reasoning/                              # 12 reasoning & decision-making skills (see reasoning/README.md)
+├── reasoning/                              # 12 reasoning & decision-making skills (see reasoning/README.md)
+└── productivity/                           # 10 productivity skills (see productivity/README.md)
 ```
 
 Every skill lives in a category folder (`office/`, `review/`, `business/`,
