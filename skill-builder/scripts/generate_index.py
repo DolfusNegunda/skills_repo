@@ -16,6 +16,11 @@ CATS = {
     "review": "Review",
     "business": "Business",
     "research": "Research",
+    "software-engineering": "Software Engineering",
+    "data-engineering": "Data Engineering",
+    "ai-engineering": "AI Engineering",
+    "reasoning": "Reasoning & Decision-Making",
+    "productivity": "Productivity",
 }
 
 
@@ -53,7 +58,9 @@ for dp, dns, fns in os.walk(REPO):
         cat = CATS.get(rel.split("/")[0], "Other")
         skills.append((cat, name.group(1).strip(), when_to_use(desc.group(1).strip()), rel))
 
-order = ["Meta", "Office", "Review", "Business", "Research", "Other"]
+order = ["Meta", "Office", "Review", "Business", "Research", "Software Engineering",
+         "Data Engineering", "AI Engineering", "Reasoning & Decision-Making",
+         "Productivity", "Other"]
 lines = [
     "# Skills Index",
     "",

@@ -7,7 +7,7 @@ skill's body up front.
 Regenerate after adding, moving, or renaming a skill:
 `python skill-builder/scripts/generate_index.py`
 
-**87 skills** across 5 groups.
+**101 skills** across 6 groups.
 
 ## Meta
 
@@ -120,3 +120,22 @@ Regenerate after adding, moving, or renaming a skill:
 | reading-scientific-papers | Use when the user asks to "read/summarize this paper", "explain this study", "what does this research say", or extract findings from academic literature. | [research/reading-scientific-papers/SKILL.md](research/reading-scientific-papers/SKILL.md) |
 | synthesizing-research | Use when the user asks to "synthesize this research", "pull these sources together", "what's the overall takeaway", or turn gathered evidence into conclusions. | [research/synthesizing-research/SKILL.md](research/synthesizing-research/SKILL.md) |
 | verifying-facts | Use when the user asks to "fact-check this", "verify this claim/statistic", "is this true", or check accuracy before publishing. | [research/verifying-facts/SKILL.md](research/verifying-facts/SKILL.md) |
+
+## Software Engineering
+
+| Skill | When to use | Path |
+|---|---|---|
+| applying-design-patterns | Use when the user asks "which design pattern fits", "how should I structure this", is drowning in conditionals/duplication, or is tempted to add a Factory/Strategy/Observer. | [software-engineering/applying-design-patterns/SKILL.md](software-engineering/applying-design-patterns/SKILL.md) |
+| authoring-sql-queries | Use when the user asks to "write a SQL query", "how do I query", "optimize this query", "why is this query slow", or needs to turn a data question into SQL. | [software-engineering/authoring-sql-queries/SKILL.md](software-engineering/authoring-sql-queries/SKILL.md) |
+| debugging-systematically | Use when the user says "this is broken", "there's a bug", "it crashes/returns the wrong thing", "why is this failing", or hands over a stack trace or failing test. | [software-engineering/debugging-systematically/SKILL.md](software-engineering/debugging-systematically/SKILL.md) |
+| designing-apis | Use when the user asks to "design an API", "define endpoints", "write an OpenAPI spec", pick REST verbs/status codes, or plan API versioning and pagination before code exists. | [software-engineering/designing-apis/SKILL.md](software-engineering/designing-apis/SKILL.md) |
+| handling-errors-and-logging | Use when the user asks to "add error handling", "improve logging", "why is this error silent", "make failures debuggable", or set up observability for a service. | [software-engineering/handling-errors-and-logging/SKILL.md](software-engineering/handling-errors-and-logging/SKILL.md) |
+| implementing-features | Use when the user says "implement this feature", "build this ticket", "add support for X", "make it do Y", or hands over a spec/story to code up. | [software-engineering/implementing-features/SKILL.md](software-engineering/implementing-features/SKILL.md) |
+| managing-dependencies | Use when the user asks "should I add this library", "how do I pin/lock deps", "is this update safe", "what does this semver range mean", "audit my dependencies", or "there's a CVE in a package I use". | [software-engineering/managing-dependencies/SKILL.md](software-engineering/managing-dependencies/SKILL.md) |
+| optimizing-code-performance | Use when the user says "this is slow", "optimize this", "reduce latency/memory", "why is it taking so long", or asks to speed up a function, endpoint, or job. | [software-engineering/optimizing-code-performance/SKILL.md](software-engineering/optimizing-code-performance/SKILL.md) |
+| packaging-and-releasing-software | Use when the user asks "how do I cut a release", "what version number", "write the changelog", "tag and publish this", "build a reproducible artifact", or "what's my rollback plan if the release breaks". | [software-engineering/packaging-and-releasing-software/SKILL.md](software-engineering/packaging-and-releasing-software/SKILL.md) |
+| reading-unfamiliar-codebases | Use when the user says "I'm new to this repo", "help me understand this codebase", "where does X happen", "how does this work", or "where do I change Y". | [software-engineering/reading-unfamiliar-codebases/SKILL.md](software-engineering/reading-unfamiliar-codebases/SKILL.md) |
+| refactoring-code | Use when the user says "refactor this", "clean up this code", "reduce duplication", "this function is too long", or "make this more readable" without adding features. | [software-engineering/refactoring-code/SKILL.md](software-engineering/refactoring-code/SKILL.md) |
+| using-git-workflows | Use when the user asks to "structure my commits", "write a good commit message", "rebase or merge?", "fix this merge conflict", "undo a bad commit", or "how should I branch for this work". | [software-engineering/using-git-workflows/SKILL.md](software-engineering/using-git-workflows/SKILL.md) |
+| writing-automated-tests | Use when the user says "write tests for this", "add unit tests", "how do I test this", "improve test coverage", or is choosing between unit, integration, and end-to-end tests. | [software-engineering/writing-automated-tests/SKILL.md](software-engineering/writing-automated-tests/SKILL.md) |
+| writing-secure-code | Use when the user asks to "make this secure", "prevent SQL injection/XSS", "handle auth", "store secrets/passwords safely", or harden a feature that touches user input, credentials, or external systems. | [software-engineering/writing-secure-code/SKILL.md](software-engineering/writing-secure-code/SKILL.md) |

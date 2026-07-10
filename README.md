@@ -57,6 +57,7 @@ Each has its own README index and cross-links to the others.
 | **[review/](review/README.md)** | 15 | Structured, evidence-based review of documents, code, SQL, Python, architecture, requirements, business cases, presentations, contracts, policies, research, books, designs, and dashboards — all inheriting a shared severity/scoring model from `conducting-structured-reviews`. |
 | **[business/](business/README.md)** | 18 | Business analysis, requirements, process mapping, stakeholder analysis, risk registers, project planning, roadmaps, KPIs, OKRs, SWOT, cost-benefit, decision matrices, business cases, change management, governance, meeting facilitation, negotiation, and stakeholder communication. |
 | **[research/](research/README.md)** | 11 | Evidence collection, source credibility, fact verification, scientific reading, citation, literature reviews, comparative research, competitor analysis, market research, technology evaluation, and research synthesis. |
+| **[software-engineering/](software-engineering/README.md)** | 14 | Implementing features, debugging, reading unfamiliar codebases, automated testing, refactoring, API design, design patterns, Git workflows, dependency management, packaging/release, performance optimization, error handling & logging, secure coding, and SQL authoring — the *authoring* counterpart to the review category. |
 
 Each skill is a thin house-style layer that adds *what good looks like* — structure,
 rubrics, checklists, decision rules — and cross-links to related skills. All skills
@@ -82,7 +83,8 @@ links, duplicates). See each category README for the full index and composition 
 ├── office/                                 # 42 office-productivity skills (see office/README.md)
 ├── review/                                 # 15 structured-review skills (see review/README.md)
 ├── business/                               # 18 business-analysis/planning skills (see business/README.md)
-└── research/                               # 11 research skills (see research/README.md)
+├── research/                               # 11 research skills (see research/README.md)
+└── software-engineering/                   # 14 software-engineering skills (see software-engineering/README.md)
 ```
 
 Every skill lives in a category folder (`office/`, `review/`, `business/`,
