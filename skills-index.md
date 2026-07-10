@@ -7,7 +7,7 @@ skill's body up front.
 Regenerate after adding, moving, or renaming a skill:
 `python skill-builder/scripts/generate_index.py`
 
-**115 skills** across 7 groups.
+**129 skills** across 8 groups.
 
 ## Meta
 
@@ -158,3 +158,22 @@ Regenerate after adding, moving, or renaming a skill:
 | optimizing-spark-jobs | Use when the user says "my Spark job is slow", "reduce shuffle", "Spark OOM", "one task takes forever", or "why is this stage stuck". | [data-engineering/optimizing-spark-jobs/SKILL.md](data-engineering/optimizing-spark-jobs/SKILL.md) |
 | orchestrating-data-workflows | Use when the user says "schedule this pipeline", "build the DAG", "set up Airflow/Dagster/ADF", "add a backfill", "wire task dependencies", or "these jobs run in the wrong order". | [data-engineering/orchestrating-data-workflows/SKILL.md](data-engineering/orchestrating-data-workflows/SKILL.md) |
 | tuning-warehouse-performance | Use when the user says "why is this warehouse query slow", "cut our compute cost", "it's scanning the whole table", or "our Snowflake/BigQuery bill is too high". | [data-engineering/tuning-warehouse-performance/SKILL.md](data-engineering/tuning-warehouse-performance/SKILL.md) |
+
+## AI Engineering
+
+| Skill | When to use | Path |
+|---|---|---|
+| applying-guardrails | Use when the user says "add guardrails", "protect against prompt injection", "sanitize LLM output", "restrict what the agent can do", or "make this AI feature safe to ship". | [ai-engineering/applying-guardrails/SKILL.md](ai-engineering/applying-guardrails/SKILL.md) |
+| building-llm-evaluations | Use when the user says "how do I eval this", "set up evals", "measure LLM quality", "is the new prompt/model better", or "add a regression gate for our AI feature". | [ai-engineering/building-llm-evaluations/SKILL.md](ai-engineering/building-llm-evaluations/SKILL.md) |
+| building-rag-systems | Use when the task is to "build a RAG system", "chat over my documents", "ground answers in our knowledge base", "reduce hallucinations with retrieval", or "answer from these sources". | [ai-engineering/building-rag-systems/SKILL.md](ai-engineering/building-rag-systems/SKILL.md) |
+| chunking-and-embedding-content | Use when preparing a corpus for a vector index, and the user asks "how should I chunk my docs", "what chunk size", "which embedding model", or "why is retrieval missing obvious answers". | [ai-engineering/chunking-and-embedding-content/SKILL.md](ai-engineering/chunking-and-embedding-content/SKILL.md) |
+| designing-agent-systems | Use when the user asks to "design an agent", "build an agentic loop", pick ReAct vs plan-and-execute, decide whether to add more agents, or stop an agent that loops or runs forever. | [ai-engineering/designing-agent-systems/SKILL.md](ai-engineering/designing-agent-systems/SKILL.md) |
+| designing-ai-systems | Use when the user asks to "design an LLM feature/system", weigh "RAG vs fine-tune vs agent", "make this AI feature production-ready", or "reduce LLM latency/cost". | [ai-engineering/designing-ai-systems/SKILL.md](ai-engineering/designing-ai-systems/SKILL.md) |
+| designing-vector-search | Use when the user asks "which vector index", "why is search slow / missing results", "how do I add filters", or "should I add hybrid search or reranking". | [ai-engineering/designing-vector-search/SKILL.md](ai-engineering/designing-vector-search/SKILL.md) |
+| detecting-hallucinations | Use when the user says "it's making things up", "stop the hallucinations", "verify the answer is grounded", "add citations", or "make the model say I don't know". | [ai-engineering/detecting-hallucinations/SKILL.md](ai-engineering/detecting-hallucinations/SKILL.md) |
+| engineering-prompts | Use when the user asks "how do I prompt for X", "write a prompt for...", "why is the model ignoring my instructions", or "improve this prompt". | [ai-engineering/engineering-prompts/SKILL.md](ai-engineering/engineering-prompts/SKILL.md) |
+| evaluating-prompts-and-outputs | Use when the user asks "how do I evaluate this output", "which prompt is better", "is this response good enough", or "did my change make it worse". | [ai-engineering/evaluating-prompts-and-outputs/SKILL.md](ai-engineering/evaluating-prompts-and-outputs/SKILL.md) |
+| generating-structured-outputs | Use when the goal is to "get JSON out of the model", "enforce a schema", "return a typed object", or fix cases where "the model returns invalid JSON" or drifts off the expected structured output. | [ai-engineering/generating-structured-outputs/SKILL.md](ai-engineering/generating-structured-outputs/SKILL.md) |
+| integrating-tool-use | Use when the user asks to "add tools to my agent", "define a function schema", fix a model that calls the wrong tool or passes bad arguments, or make tool calls safe and robust. | [ai-engineering/integrating-tool-use/SKILL.md](ai-engineering/integrating-tool-use/SKILL.md) |
+| managing-agent-memory | Use when the user asks to "add memory to my agent", "remember across sessions", compact a growing conversation, or fix an agent that forgets, repeats itself, or acts on outdated facts. | [ai-engineering/managing-agent-memory/SKILL.md](ai-engineering/managing-agent-memory/SKILL.md) |
+| managing-context-windows | Use when input is "too long for the context", "hitting token limits", "the model ignores the middle", "truncating my prompt", or costs/latency climb with prompt size. | [ai-engineering/managing-context-windows/SKILL.md](ai-engineering/managing-context-windows/SKILL.md) |

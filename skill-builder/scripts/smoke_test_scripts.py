@@ -20,12 +20,12 @@ ROOT = Path(__file__).resolve().parents[2]
 results = []
 
 
-def run(script_rel, arg):
+def run(script_rel, *args):
     """Run a bundled script; return (exit_code, parsed_json_or_None)."""
     script = ROOT / script_rel
     if not script.exists():
         return None, None
-    proc = subprocess.run([sys.executable, str(script), str(arg)],
+    proc = subprocess.run([sys.executable, str(script), *[str(a) for a in args]],
                           capture_output=True, text=True)
     data = None
     try:
@@ -68,6 +68,13 @@ def make_fixtures(tmp):
     c.drawString(72, 720, "Real text content here."); c.showPage(); c.save()
     c2 = canvas.Canvas(str(tmp / "scan.pdf"), pagesize=letter)
     c2.rect(72, 600, 200, 100, fill=1); c2.showPage(); c2.save()
+
+    # JSON output + schema for the structured-output validator (stdlib only)
+    (tmp / "schema.json").write_text(
+        json.dumps({"type": "object", "required": ["name"],
+                    "properties": {"name": {"type": "string"}}}), encoding="utf-8")
+    (tmp / "out_good.json").write_text('{"name":"x"}', encoding="utf-8")
+    (tmp / "out_bad.json").write_text('{"nope":1}', encoding="utf-8")
 
 
 def main():
@@ -114,6 +121,14 @@ def main():
         print("processing-documents/detect_type.py")
         rc, d = run("office/processing-documents/scripts/detect_type.py", tmp / "good.docx")
         check("type detector identifies docx", rc == 0 and d and d["detected_type"] == "docx")
+
+        print("generating-structured-outputs/validate_json_output.py")
+        rc, d = run("ai-engineering/generating-structured-outputs/scripts/validate_json_output.py",
+                    tmp / "out_good.json", tmp / "schema.json")
+        check("json validator passes valid output", rc == 0 and d and d["status"] == "OK")
+        rc, d = run("ai-engineering/generating-structured-outputs/scripts/validate_json_output.py",
+                    tmp / "out_bad.json", tmp / "schema.json")
+        check("json validator fails schema violation", rc == 1 and d and d["status"] == "FAILED")
 
     passed = sum(1 for _, ok in results if ok)
     total = len(results)
