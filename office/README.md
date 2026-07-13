@@ -18,10 +18,12 @@ spend your effort on quality.
 mechanical checks a cheap model shouldn't have to reason through, document skills
 bundle a `scripts/` tool wired into their workflow: **validators** for producers
 (`engineering-excel-workbooks`, `authoring-word-documents`, `building-powerpoint-decks`)
-that drive a produce → validate → fix → re-validate loop, and **extractors** for
+that drive a produce → validate → fix → re-validate loop, **extractors** for
 processors (`processing-documents`, `processing-word-documents`,
 `processing-powerpoint-files`, `processing-excel-files`, `processing-pdf-documents`)
-that ingest deterministically and self-report fidelity. All are exercised by
+that ingest deterministically and self-report fidelity, and a **templatize → fill →
+validate engine** (`building-document-templates`) that turns a client's .docx/.pptx
+into a reusable, governed template and fills it on demand. All are exercised by
 `skill-builder/scripts/smoke_test_scripts.py` in CI.
 
 ## Two families
@@ -55,7 +57,7 @@ that ingest deterministically and self-report fidelity. All are exercised by
 | [proofreading-text](proofreading-text/SKILL.md) | Surface-level correctness pass (grammar, spelling, consistency). |
 | [editing-prose](editing-prose/SKILL.md) | Substantive editing for clarity, flow, and structure. |
 | [formatting-documents](formatting-documents/SKILL.md) | Consistent visual and structural formatting. |
-| [building-document-templates](building-document-templates/SKILL.md) | Reusable, governed templates with placeholders. |
+| [building-document-templates](building-document-templates/SKILL.md) | Templatize a client's .docx/.pptx into a reusable, governed template + manifest, then fill it on demand (tested engine). |
 | [running-mail-merge](running-mail-merge/SKILL.md) | Personalized bulk documents from a data source. |
 | [automating-document-generation](automating-document-generation/SKILL.md) | Data + template → finished documents at scale. |
 | [engineering-spreadsheets](engineering-spreadsheets/SKILL.md) | Platform-agnostic spreadsheet modeling discipline. |

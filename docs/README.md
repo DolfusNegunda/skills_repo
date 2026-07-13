@@ -49,7 +49,7 @@ you.
   links, duplicates, script-gap + named-method-overclaim warnings). Currently **0 errors,
   0 warnings** (151 catalog skills + 1 worked example).
 - `skill-builder/scripts/smoke_test_scripts.py` — runs every bundled document script
-  against generated fixtures (**15/15**).
+  against generated fixtures (**27/27**).
 - `skill-builder/scripts/check_docs_fresh.py` — fails if a leadership doc's headline skill
   count or smoke-test count drifts from the canonical (derived) numbers.
 - `skill-builder/scripts/generate_index.py` — regenerates `skills-index.md`.

@@ -38,9 +38,10 @@ trees, and now runnable tools.
 - **Independently re-benchmarked against Anthropic's own method (2026-07-10):** the repo
   **matches or exceeds** them on breadth, discoverability, and repository consistency.
 - **The one axis Anthropic led on — executable, deterministic document tooling — is now
-  closed.** 11 document skills ship tested scripts (validators that catch errors before
-  a file ships; extractors that ingest files faithfully), all **verified automatically
-  in CI (15/15 checks passing)** on every change.
+  closed.** 12 document skills ship tested scripts (validators that catch errors before
+  a file ships; extractors that ingest files faithfully; and a templatize→fill→validate
+  engine that turns a client's .docx/.pptx into a reusable, governed template), all
+  **verified automatically in CI (27/27 checks passing)** on every change.
 
 ## Honest status (so nothing is over-sold)
 

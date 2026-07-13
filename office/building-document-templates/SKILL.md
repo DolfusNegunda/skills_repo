@@ -1,122 +1,156 @@
 ---
 name: building-document-templates
-description: Design reusable, governed document templates (Word .dotx, Docs, Excel, slides) with clear placeholders, locked structure, built-in styles, and guidance so anyone can produce consistent documents. Use when the user asks to "create a template", "make this reusable", "build a standard format", or turn a one-off document into a repeatable one. Produces a maintainable template with placeholder conventions and usage notes, not just an empty copy.
+description: Turn a client's existing Word (.docx) or PowerPoint (.pptx) file into a reusable, governed template — same layout, fonts, logos and styles, with the variable content swapped for placeholders — then fill it to produce consistent future documents from data. Use when the user asks to "create a template", "templatize this document/deck", "make this reusable", "build a standard format", or "produce the same kind of document again just with new content". Ships a tested engine (templatize → registry → fill → validate) plus placeholder/governance conventions, not just an empty copy.
 ---
 
 # Building Document Templates
 
 ## Scope
-Turning a document into a reusable, consistent, governed template: placeholder
-design, style/structure locking, embedded guidance, and versioning. Applies to
-Word/Docs, spreadsheets, and slides. The one-off document itself is built with the
-relevant authoring skill; brand comes from
+Turn a real example document into a reusable **template + manifest**, register it in
+a **gallery** keyed by client and document type, and **fill** it on demand to produce
+consistent future documents. Covers Word (`.docx`) and PowerPoint (`.pptx`) end to
+end. Excel and PDF are handled at the edges — see **Format support** below. The
+one-off document itself is built with the relevant authoring skill; brand comes from
 [producing-branded-documents](../producing-branded-documents/SKILL.md).
 
-## Purpose
-Let non-experts produce consistent, correct documents fast — with clear
-placeholders, protected structure, built-in styles, and instructions — and keep the
-template maintainable as needs change.
+## Core principle: preserve + inject, never rebuild
+A client's file **already is the template** — its layout, fonts, logos, slide masters
+and styles are exactly what "consistent" means. Templatizing keeps that file intact
+and only **swaps the variable text for `{{ placeholder }}` tags**. Never rebuild the
+layout by hand and never re-solve OOXML internals. Filling later touches only the
+placeholder text, so every produced document looks identical to the client's original.
 
-## When to use this skill
-- "Create a template" / "make this reusable" / "build a standard format."
-- Turning a good one-off document into a repeatable standard.
-- Standardizing a recurring document type across a team/org.
+## The engine
+```text
+scripts/
+  templatize.py   # client file -> proposes fixed/variable split -> emits template + manifest
+  fill.py         # template + data JSON -> finished document (+ optional --export-pdf)
+  validate.py     # gate: no leftover tags, structure preserved
+  registry.py     # browse the gallery: list / find / show templates
+  common.py       # format detection, placeholder convention, manifest I/O, registry paths
+registry/                              # the template gallery (version-controlled)
+  <client>/<doc-type>/
+      template.docx|pptx               # the client's file, with placeholders
+      manifest.json                    # fields, types, guidance, owner, version, changelog
+```
+Point `$TEMPLATE_REGISTRY` at a shared folder to keep the gallery outside the repo.
 
-## When NOT to use this skill
-- A single document → the relevant authoring skill.
-- Data-driven bulk generation → [automating-document-generation](../automating-document-generation/SKILL.md) / [running-mail-merge](../running-mail-merge/SKILL.md).
-- Brand rendering pipeline → [producing-branded-documents](../producing-branded-documents/SKILL.md).
+Dependencies: `pip install python-docx python-pptx` (already used across the office
+skills). PDF export additionally needs LibreOffice (or Save-As-PDF from the app).
 
-## Inputs
-- A strong example of the target document and which parts are fixed vs. variable.
-- Who will use it and their skill level; governance owner.
-- Any brand/style spec to inherit.
-
-## Outputs
-- A template file (e.g. `.dotx`) with named styles, clearly marked placeholders,
-  protected fixed structure, embedded guidance, and version/owner metadata.
+## Why "assisted" (propose → confirm → build)
+One example can't reveal what's boilerplate and what changes each time — "Acme Q3 2026"
+could mean client=Acme, quarter=Q3, or both. So templatize is **two steps**: it
+*proposes* a fixed/variable split for a human or agent to confirm, then *builds*. Do
+not promise fully-automatic detection; the confirm step is where correctness comes from.
 
 ## Workflow
 ```
 Progress:
-- [ ] 1. Identify fixed vs. variable content from a good example
-- [ ] 2. Build the structure with named styles
-- [ ] 3. Mark placeholders with a clear, consistent convention
-- [ ] 4. Add embedded guidance/instructions
-- [ ] 5. Protect fixed structure; leave placeholders editable
-- [ ] 6. Add version, owner, and change-log; test with a real user
+- [ ] 1. Propose: extract candidate variable fields from the example file
+- [ ] 2. Review: mark each keep=variable | fixed | remove; name fields; set list types
+- [ ] 3. Build: inject placeholders and register the template + manifest
+- [ ] 4. Fill: supply data keyed by the manifest fields -> finished document
+- [ ] 5. Validate: no leftover tags, structure intact (required before shipping)
 ```
 
-**Step 1 — Fixed vs. variable.** From a good example, separate what never changes
-(boilerplate, structure, legal text) from what the user fills each time.
+**Step 1 — Propose.**
+```bash
+python scripts/templatize.py propose --file client_qbr.docx --out proposal.json
+```
+Reads the file and writes every candidate value (deduped — the same client name in
+five places becomes one field), with a heuristic name (from `Label: value` lines) and
+a suggested keep/type.
 
-**Step 2 — Style-driven structure.** Build on named styles so every instance is
-consistent and re-brandable (see [formatting-documents](../formatting-documents/SKILL.md)).
+**Step 2 — Review (the assisted step).** Edit `proposal.json`. For each candidate set:
+- `keep`: `variable` (filled each time), `fixed` (boilerplate that stays), or `remove`
+  (drop this line — use for surplus example bullets/rows a `list` field regenerates).
+- `suggest_name`: a clean `snake_case` field name.
+- `suggest_type`: `text` (default) or `list` (a repeating bullet/row).
 
-**Step 3 — Placeholder convention.** Mark every variable clearly and consistently —
-e.g. `[Client Name]`, `{{amount}}`, or content controls with prompt text. Users
-must instantly see what to replace and nothing should ship with a placeholder left in.
+For a repeating list, mark **one** representative line `variable` + `list` and mark the
+other example lines `remove`.
 
-**Step 4 — Embedded guidance.** Add short instructions (in comments, hidden guidance
-text, or a first-page note) explaining how to complete each section. The template
-should teach its own use.
+**Step 3 — Build.**
+```bash
+python scripts/templatize.py build --file client_qbr.docx --fields proposal.json \
+    --client globex --doc-type quarterly-review \
+    --owner you@co.com --created 2026-07-13
+```
+Injects placeholders (longest values first, so `Q3 2026` is tagged before a bare `Q3`),
+removes the lines you marked, and writes `template.<fmt>` + `manifest.json` into the
+gallery. Pass `--created` explicitly (scripts have no clock).
 
-**Step 5 — Protect structure.** Lock/protect fixed regions and styles so users can't
-accidentally break the format; leave placeholder fields editable.
+**Step 4 — Fill.** Discover what a template needs, then fill it:
+```bash
+python scripts/registry.py show --client globex --doc-type quarterly-review
+python scripts/fill.py --client globex --doc-type quarterly-review \
+    --data content.json --out out/initech-q4.docx [--export-pdf]
+```
+`content.json` is `{field_name: value}` (a `list` field takes a JSON array — it expands
+into real bullets/rows, not one comma-joined line). The document *content* can come
+from a writing skill (e.g. `writing-status-reports`); this engine renders it into the
+locked format.
 
-**Step 6 — Govern & test.** Add version, owner, and last-updated; keep a change log.
-Have a real user complete it — if they misuse a placeholder or break structure, fix
-the template, not the user.
+**Step 5 — Validate (required).**
+```bash
+# note: the registry slugifies the doc-type, so the folder is quarterly_review (underscore)
+python scripts/validate.py out/initech-q4.docx --template registry/globex/quarterly_review/template.docx
+```
+Fails with specific messages on any leftover `{{ tag }}`, empty content, or changed
+structure (section/slide count). **Do not ship anything that isn't `"status": "OK"`.**
+
+## Format support
+| Format | Templatize | How |
+|---|---|---|
+| **Word `.docx`** | Yes | Run-aware in-place placeholder injection; list fields expand paragraphs. |
+| **PowerPoint `.pptx`** | Yes | Same engine over slides, shapes, tables and speaker notes. |
+| **Excel `.xlsx`** | Not yet | Needs a different cell + *data-region* model (rows that grow). Planned; use [engineering-excel-workbooks](../engineering-excel-workbooks/SKILL.md) for now. |
+| **PDF** | As **output**, not a source | Fill a `.docx`/`.pptx` then `--export-pdf`. An arbitrary flat PDF has no reliable structure to templatize. Filling existing **AcroForm** PDFs is planned. |
 
 ## Principles
-1. **Separate fixed from variable** — the core of any template.
-2. **Obvious placeholders** — impossible to miss, consistent convention, never shipped filled-in wrong.
-3. **Style-driven,** so instances are consistent and re-brandable.
-4. **Self-documenting** — guidance travels with the template.
-5. **Governed** — one owner, versioned, with a change log.
-
-## Decision framework
-- **Free-form fill?** Placeholder text + guidance.
-- **Controlled fields (dates, dropdowns)?** Content controls / form fields.
-- **Feeds automation later?** Use machine-readable placeholders (`{{field}}`) → [automating-document-generation](../automating-document-generation/SKILL.md).
-- **Brand-critical?** Inherit from the brand spec / renderer.
+1. **Preserve + inject** — the client's file is the template; only text changes.
+2. **Separate fixed from variable** — confirmed by a human, not guessed blindly.
+3. **Obvious, single-convention placeholders** (`{{ field }}`) — never shipped filled wrong.
+4. **A manifest travels with every template** — a future agent fills from it without re-reading the whole document.
+5. **Governed** — one gallery, one owner, versioned, with a change log.
 
 ## Common mistakes
-- **Placeholders that look like real content** — users miss them and ship `[Client Name]`.
-- **No guidance** — users don't know what goes where or how.
-- **Unprotected structure** — users break the format; every instance drifts.
-- **Baking in one instance's data** (a real client name/number left in).
-- **No owner or version** — the template forks and rots.
-- **Over-locking** — so rigid users abandon it for their own copy.
+- **Rebuilding the layout by hand** instead of injecting into the client's own file — drift and wasted effort.
+- **Trusting auto-detection** — always confirm the fixed/variable split.
+- **Leaving surplus example bullets** when creating a `list` field (mark them `remove`).
+- **Placeholders that look like real content** — users ship `{{ client_name }}` or, worse, a leftover real client name.
+- **No owner/version** — the template forks and rots.
+- **Shipping without `validate.py`** — the one gate that catches unfilled tags.
 
 ## Validation checklist
-- [ ] Fixed and variable content clearly separated.
-- [ ] Placeholders use one consistent, unmissable convention.
-- [ ] Built on named styles; brand/style inherited.
-- [ ] Guidance embedded for each section.
-- [ ] Fixed structure protected; placeholders editable.
-- [ ] No leftover real data from the source example.
-- [ ] Owner, version, and change log present; tested by a real user.
+- [ ] Fixed vs. variable confirmed by a person, not just the heuristic.
+- [ ] Placeholders use the one `{{ field }}` convention; none look like real content.
+- [ ] `list` fields expand to real bullets/rows; surplus examples removed.
+- [ ] Manifest has every field with type, example, and guidance.
+- [ ] No leftover real client data from the source example.
+- [ ] Owner, version, change log present; `validate.py` returns `OK`.
 
 ## Edge cases
-- **Legal/regulated templates:** lock mandatory clauses; control who can edit them.
-- **Multi-variant (regions/languages):** manage variants under one owner, not divergent copies.
-- **Long-lived templates:** schedule periodic review so they stay current.
-- **Downstream automation:** align placeholder names to the data source schema.
+- **Same value in many places** (client name) → one field fills all occurrences by design.
+- **Overlapping values** (`Q3` inside `Q3 2026`) → build tags longest-first to avoid clobbering.
+- **Value spans formatting runs** → build consolidates into the first run so the tag stays intact; build warns if a value matched 0 times (check it manually).
+- **Legal/regulated templates** → keep mandatory clauses `fixed`; control who owns the gallery entry.
+- **Multi-variant (regions/languages)** → separate `doc-type` entries under one client, not divergent private copies.
 
 ## Related skills
-- [formatting-documents](../formatting-documents/SKILL.md), [authoring-word-documents](../authoring-word-documents/SKILL.md).
-- [running-mail-merge](../running-mail-merge/SKILL.md), [automating-document-generation](../automating-document-generation/SKILL.md).
-- [producing-branded-documents](../producing-branded-documents/SKILL.md).
+- [authoring-word-documents](../authoring-word-documents/SKILL.md), [building-powerpoint-decks](../building-powerpoint-decks/SKILL.md) — build the one-off the template is learned from.
+- [producing-branded-documents](../producing-branded-documents/SKILL.md) — brand/logo rendering pipeline.
+- [running-mail-merge](../running-mail-merge/SKILL.md), [automating-document-generation](../automating-document-generation/SKILL.md) — bulk fills from a data source.
+- [processing-word-documents](../processing-word-documents/SKILL.md), [processing-powerpoint-files](../processing-powerpoint-files/SKILL.md) — extract content to feed a fill.
+- Detection heuristics, placeholder rules, per-format notes: [references/engine-design.md](references/engine-design.md).
 
 ## Examples
-**Input:** "Make our consulting SOW into a reusable template."
-**Output:** A `.dotx` with fixed boilerplate and legal clauses (protected), styled
-headings, clearly marked `[Client]`, `[Scope]`, `[Fee]`, `[Start Date]` content
-controls with prompt text, a first-page how-to note, no leftover client data, and
-owner/version/change-log metadata — tested by a consultant who filled it error-free.
-
-## Automation opportunities
-- Machine-readable placeholders let the same template drive mail merge or generation.
-- Central template gallery so teams always start from the current version.
-- A pre-send check that flags any unfilled placeholder.
+**Input:** "A client sent this quarterly review deck — set it up so we produce the same
+deck each quarter with new numbers."
+**Output:** `templatize.py propose` on the deck → confirm client name, period, and
+metrics as variable and the bullet list as a `list` field → `build` registers
+`globex/board-deck` (template.pptx + manifest.json) → next quarter, `registry.py show`
+reveals the fields, `fill.py` renders a new deck from `content.json`, `validate.py`
+confirms no placeholder was missed. Same masters, fonts, and layout every time — only
+the content changes. See [examples/README.md](examples/README.md) for the full run.
