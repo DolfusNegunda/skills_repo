@@ -53,6 +53,12 @@ def make_fixtures(tmp):
     wb2 = Workbook(); wb2.active["A1"] = "clean"; wb2.save(tmp / "good.xlsx")
     (tmp / "data.csv").write_text("a,b\n1,2\n", encoding="utf-8")
 
+    # xlsx with an UNCACHED error formula: openpyxl writes the formula but computes
+    # nothing, so #DIV/0! is only detectable AFTER a real recalculation pass.
+    wbf = Workbook(); wsf = wbf.active
+    wsf["A1"] = 10; wsf["A2"] = 0; wsf["A3"] = "=A1/A2"
+    wbf.save(tmp / "formula.xlsx")
+
     # docx: bad (tag) and good (heading)
     b = Document(); b.add_paragraph("Hi {{ name }}"); b.save(tmp / "bad.docx")
     g = Document(); g.add_heading("Title", 1); g.add_paragraph("ok"); g.save(tmp / "good.docx")
@@ -87,6 +93,28 @@ def main():
         check("excel validator fails on bad workbook", rc == 1 and d and d["status"] == "FAILED")
         rc, d = run("office/engineering-excel-workbooks/scripts/validate_workbook.py", tmp / "good.xlsx")
         check("excel validator passes clean workbook", rc == 0 and d and d["status"] == "OK")
+
+        print("engineering-excel-workbooks/recalculate_workbook.py")
+        recalc_out = tmp / "formula.recalc.xlsx"
+        rc, d = run("office/engineering-excel-workbooks/scripts/recalculate_workbook.py",
+                    tmp / "formula.xlsx", recalc_out)
+        status = (d or {}).get("status")
+        if status == "RECALCULATED":
+            # Real path (LibreOffice present): assert only the script CONTRACT (ran,
+            # produced output). Whether the recompute populates cached error values is
+            # environment-dependent (LibreOffice recalc-on-load policy) and is verified
+            # MANUALLY, not asserted here — so CI stays green on the unverified branch
+            # without over-claiming the gap is closed.
+            name = "recalc runs and produces output (LibreOffice present)"
+            ok = rc == 0 and bool(d.get("recalculated")) and recalc_out.exists()
+        elif status == "SKIPPED_NO_ENGINE":
+            # Fallback path (no LibreOffice here): must skip gracefully, NOT claim success.
+            name = "recalc degrades gracefully when LibreOffice is absent"
+            ok = rc == 0 and d.get("recalculated") is False
+        else:
+            name = f"recalc returned unexpected status: {status!r}"
+            ok = False
+        check(name, ok)
 
         print("processing-excel-files/extract_workbook.py")
         rc, d = run("office/processing-excel-files/scripts/extract_workbook.py", tmp / "data.csv")

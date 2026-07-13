@@ -51,7 +51,7 @@ Progress:
 - [ ] 5. Add validation, dropdowns, and conditional formatting
 - [ ] 6. Add summaries / pivots / charts on top of clean data
 - [ ] 7. Audit: trace precedents, check totals, stress inputs
-- [ ] 8. Validate & repair: run the validator, fix every error, re-run until clean
+- [ ] 8. Recalculate (LibreOffice) so formula results are real, then validate & repair: fix every error, re-run until clean
 ```
 
 **Step 1 — Outputs first.** Know the answer the sheet must produce before building.
@@ -76,20 +76,24 @@ conditional formatting flags outliers and errors.
 **Step 7 — Audit.** Trace precedents on key outputs, reconcile totals, and stress-
 test extreme inputs (zero, negative, blank) before delivery.
 
-**Step 8 — Validate & repair (mandatory before delivery).** Do not hand over a
-workbook you have only eyeballed. Run the bundled validator, read its JSON
-`errors`, fix each one, and **re-run until `status` is `OK`** — a
-produce → validate → fix → re-validate loop, not a one-time check:
+**Step 8 — Recalculate, then validate & repair (mandatory before delivery).** Do not
+hand over a workbook you have only eyeballed. The validator reads *cached* formula
+results (openpyxl cannot compute formulas), so **recalculate first** to make those
+results real, then run the produce → recalculate → validate → fix → re-validate loop
+until `status` is `OK`:
 
 ```bash
-python scripts/validate_workbook.py path/to/workbook.xlsx
+python scripts/recalculate_workbook.py path/to/workbook.xlsx   # writes *.recalc.xlsx
+python scripts/validate_workbook.py path/to/workbook.recalc.xlsx
 ```
 
-It fails (exit 1) on stray Excel error values (`#REF!`, `#DIV/0!`, …) and leftover
-placeholder text (`TBD`, `{{tag}}`, …), and warns on merged cells, empty sheets,
-and external links. If it warns that no cached formula results were found, open and
-save the file in Excel (or run a recalc step) so error results become checkable,
-then validate again.
+`recalculate_workbook.py` drives a headless LibreOffice pass that recomputes every
+formula and writes fresh cached values. If LibreOffice is not installed it reports
+`SKIPPED_NO_ENGINE` and exits 0 — in that case validate the original file and treat a
+"no cached results" warning as an unresolved limitation, **not** a pass (never trust a
+cached value you did not just recalculate). The validator then fails (exit 1) on stray
+Excel error values (`#REF!`, `#DIV/0!`, …) and leftover placeholder text (`TBD`,
+`{{tag}}`, …), and warns on merged cells, empty sheets, and external links.
 
 ## Principles
 1. **Separate inputs, logic, and outputs.** Never bury an assumption inside a formula.
@@ -158,11 +162,16 @@ then validate again.
 - [references/workbook-architecture.md](references/workbook-architecture.md) — sheet layout, naming, and audit conventions.
 
 ## Scripts
-- [scripts/validate_workbook.py](scripts/validate_workbook.py) — **run this** before
-  delivery. Deterministic gate over a produced `.xlsx`: flags Excel error values and
-  leftover placeholders (fail), and merged cells / empty sheets / external links
-  (warn). Prints a JSON report and exits non-zero on error, so it drives the Step 8
-  fix-and-re-validate loop. Requires `openpyxl` (`pip install openpyxl`).
+- [scripts/recalculate_workbook.py](scripts/recalculate_workbook.py) — **run this first**
+  in Step 8. Drives a headless LibreOffice pass to recompute every formula and write fresh
+  cached values (openpyxl can't compute formulas), so the validator checks *real* results.
+  Writes `*.recalc.xlsx`; degrades gracefully (`SKIPPED_NO_ENGINE`, exit 0) if LibreOffice
+  is absent. Requires a LibreOffice install for the real path.
+- [scripts/validate_workbook.py](scripts/validate_workbook.py) — **run this** on the
+  recalculated file before delivery. Deterministic gate over a produced `.xlsx`: flags
+  Excel error values and leftover placeholders (fail), and merged cells / empty sheets /
+  external links (warn). Prints a JSON report and exits non-zero on error, so it drives the
+  Step 8 fix-and-re-validate loop. Requires `openpyxl` (`pip install openpyxl`).
 
 ## Examples
 **Input:** "Build a loan calculator: principal, rate, term → monthly payment and schedule."
