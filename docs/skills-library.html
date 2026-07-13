@@ -1,4 +1,4 @@
-<title>Office Skills Library</title>
+<title>Skills Library</title>
 <style>
   :root {
     --paper:#F5F7FA; --surface:#FFFFFF; --surface-2:#EFF3F7;
@@ -135,8 +135,9 @@
 
 <div class="topbar">
   <div class="wrap">
-    <span class="brand">/ <b>office-skills</b></span>
+    <span class="brand">/ <b>skills-library</b></span>
     <nav class="navpills" aria-label="Sections">
+      <a href="#areas">The 10 areas</a>
       <a href="#foundation">Foundation</a>
       <a href="#communication">Communication</a>
       <a href="#docs-data">Documents &amp; Data</a>
@@ -148,18 +149,14 @@
 
 <header class="hero">
   <div class="wrap">
-    <p class="eyebrow">Internal Claude Agent Skills · v1</p>
-    <h1>A skills library for everyday office work</h1>
-    <p class="lede">Nine reusable, house-style skills that teach Claude to do the document and
-      communication work every team repeats — meeting notes, emails, status reports, branded
-      deliverables, document summaries, and more. Each is a self-contained folder Claude loads only
-      when it's relevant.</p>
-    <p class="lede" style="font-size:0.9em;opacity:0.8"><strong>Note (2026-07):</strong> this page
-      showcases the original nine office skills. The library now spans <strong>151 skills across ten
-      areas</strong> (office, review, business, research, software-/data-/AI-engineering, reasoning,
-      productivity, plus the meta-skill). See <code>skills-index.md</code> for the full current set.</p>
+    <p class="eyebrow">Internal Claude Agent Skills</p>
+    <h1>A skills library for everyday knowledge work</h1>
+    <p class="lede">Reusable, house-style skills that teach Claude to do the document, analysis,
+      engineering, and decision work every team repeats — so even a cheaper, smaller model produces
+      consistent, professional output. Each is a self-contained folder Claude loads only when it's
+      relevant. This page spotlights the office core in depth; the ten areas below map the full set.</p>
     <div class="meta">
-      <span><b>9</b>&nbsp;skills</span>
+      <span><b>151</b>&nbsp;skills across 10 areas</span>
       <span><span class="dot"></span> works in Claude Code, the API &amp; claude.ai</span>
       <span>no external services · no MCP required</span>
     </div>
@@ -168,12 +165,74 @@
 
 <main class="wrap">
 
+  <!-- THE 10 AREAS -->
+  <section id="areas">
+    <div class="sec-head"><h2>The ten areas</h2></div>
+    <p class="sec-intro">The library spans <strong>151 skills</strong> across ten areas. Each area folder
+      has its own README index and cross-links to the others; the flat
+      <code>skills-index.md</code> lists every skill with its "when to use". The detailed cards further
+      down spotlight the <strong>office</strong> core.</p>
+    <div class="grid">
+      <article class="card">
+        <h3><a href="../office/README.md">office</a> <span class="tag ok">42</span></h3>
+        <p class="what">Word / Excel / PowerPoint, Google Workspace, PDF &amp; OCR, the writing genres
+          (reports, proposals, minutes, exec summaries), editing, templates, dashboards, and branding.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../review/README.md">review</a> <span class="tag ok">15</span></h3>
+        <p class="what">Structured, evidence-based review of documents, code, SQL, architecture,
+          requirements, contracts, policies, research, and designs — one shared severity/scoring model.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../business/README.md">business</a> <span class="tag ok">18</span></h3>
+        <p class="what">Analysis, requirements, process mapping, risk registers, planning, KPIs/OKRs,
+          SWOT, cost-benefit, decision matrices, business cases, change, and governance.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../research/README.md">research</a> <span class="tag ok">11</span></h3>
+        <p class="what">Evidence collection, source credibility, fact verification, scientific reading,
+          citation, literature reviews, competitor and market research, and synthesis.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../software-engineering/README.md">software-engineering</a> <span class="tag ok">14</span></h3>
+        <p class="what">Implementing features, debugging, testing, refactoring, API design, Git,
+          dependencies, packaging, performance, secure coding, and SQL authoring.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../data-engineering/README.md">data-engineering</a> <span class="tag ok">14</span></h3>
+        <p class="what">Pipeline design, lakehouse &amp; dimensional modeling, batch/streaming,
+          incremental/CDC, orchestration, data quality, lineage, schema evolution, and performance.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../ai-engineering/README.md">ai-engineering</a> <span class="tag ok">14</span></h3>
+        <p class="what">Prompting, evaluation, context management, RAG, embeddings &amp; vector search,
+          agents, tool use, memory, structured outputs (a tested validator), guardrails, and system design.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../reasoning/README.md">reasoning</a> <span class="tag ok">12</span></h3>
+        <p class="what">Problem decomposition, root-cause and gap analysis, constraints, trade-offs,
+          deciding under uncertainty, prioritization, estimation, scenario planning, and systems thinking.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../productivity/README.md">productivity</a> <span class="tag ok">10</span></h3>
+        <p class="what">Daily/weekly planning, task &amp; time management, task breakdown, note-taking,
+          personal knowledge management, decision journaling, goal setting, and effective study.</p>
+      </article>
+      <article class="card">
+        <h3><a href="../skill-builder/SKILL.md">skill-builder</a> <span class="tag meta">meta · 1</span></h3>
+        <p class="what">The meta-skill the whole library is authored with — house style, frontmatter
+          rules, a copy-paste template, the determinism standard, and a pre-publish checklist.</p>
+      </article>
+    </div>
+  </section>
+
   <!-- PIPELINE -->
   <section id="pipeline">
     <div class="sec-head"><h2>How the pieces fit together</h2></div>
-    <p class="sec-intro">The skills are designed to compose. The core pipeline turns raw updates into
-      a branded, shippable deliverable — content skills produce the substance, and one rendering skill
-      applies the standard look and the right client logo.</p>
+    <p class="sec-intro">The skills are designed to compose. The office core pipeline turns raw updates
+      into a branded, shippable deliverable — content skills produce the substance, and one rendering
+      skill applies the standard look and the right client logo. (The review, business, research, and
+      engineering areas compose the same way — see each area's README.)</p>
     <div class="flow-scroll">
       <div class="flow">
         <div class="node"><div class="n-name">/summarizing-meeting-notes</div><div class="n-role">raw notes → decisions + action items</div></div>
@@ -454,7 +513,7 @@ python scripts/build_report.py \
 
 <footer>
   <div class="wrap">
-    <span>Office Skills Library · built and verified with <code style="font-family:var(--mono)">/skill-builder</code></span>
+    <span>Skills Library · built and verified with <code style="font-family:var(--mono)">/skill-builder</code></span>
     <span>Skills authored on Fable · reviewed on Opus · original work, your license</span>
   </div>
 </footer>

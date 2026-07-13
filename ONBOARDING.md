@@ -51,11 +51,11 @@ automatically in CI.
 Plus your own document-branding and lessons-learned skills, generalized to work for
 any organization.
 
-**Quality has been benchmarked** against Anthropic's own published skills — the repo
-matches or exceeds them on breadth, discoverability, and consistency; the one axis
-they led on (executable, deterministic document tooling) has since been closed. See
-[docs/benchmark-vs-anthropic.md](docs/benchmark-vs-anthropic.md) and, for an
-independent re-check, [docs/REBENCHMARK-REQUEST.md](docs/REBENCHMARK-REQUEST.md).
+**Quality has been benchmarked** against Anthropic's own method — the repo matches or
+exceeds them on breadth, discoverability, and consistency; the one axis they led on
+(executable, deterministic document tooling) has since been closed. See the current
+assessment in
+[docs/benchmark-2026-07-full-library.md](docs/benchmark-2026-07-full-library.md).
 
 ## How it's used (two audiences)
 

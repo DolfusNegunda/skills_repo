@@ -77,5 +77,4 @@ trees, and now runnable tools.
 
 - [../ONBOARDING.md](../ONBOARDING.md) — 5-minute orientation for anyone new.
 - [benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md) — the current, full-library quality assessment.
-- [benchmark-vs-anthropic.md](benchmark-vs-anthropic.md) — the earlier (superseded) assessment, kept for history.
 - [USER-GUIDE.md](USER-GUIDE.md) — plain-language guide for non-technical users.

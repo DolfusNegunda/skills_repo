@@ -14,7 +14,3 @@ venv/
 # Scratch / temp
 scratchpad/
 *.tmp
-
-# Starter artifacts (superseded by the live repo; keep locally, don't push)
-skills_repo-starter.zip
-skills_repo-starter/

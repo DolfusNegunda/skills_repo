@@ -10,7 +10,6 @@ you.
 | [LEAD-BRIEF.md](LEAD-BRIEF.md) | One-page leadership briefing: business case, evidence, honest status, and the decisions to make. **Start here.** |
 | [../ONBOARDING.md](../ONBOARDING.md) | 5-minute orientation — what the repo is, why it exists, what's built, how it's used. Ends with a one-paragraph version for the lead. |
 | [benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md) | **Current** full-library quality assessment (all 151 skills, 12 dimensions incl. content correctness & model uplift). **Start here for quality.** |
-| [benchmark-vs-anthropic.md](benchmark-vs-anthropic.md) | The earlier assessment (87-skill, document-centric) — **superseded**, kept for history. |
 | [correctness-audit-process.md](correctness-audit-process.md) | How content correctness is kept honest: the mechanical check, per-skill gate, and periodic adversarial audit. |
 
 ## For anyone new (non-technical welcome)

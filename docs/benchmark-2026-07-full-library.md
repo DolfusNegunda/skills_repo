@@ -2,8 +2,8 @@
 
 A fresh, file-grounded benchmark of the entire skills repository (151 catalog skills
 across 9 categories plus the `skill-builder` meta-skill) against the Agent Skills open standard and Anthropic's known skill-authoring
-method. Supersedes `benchmark-vs-anthropic.md` (which graded the earlier 87-skill,
-document-centric repo). This assessment reads the actual files, runs the actual tooling,
+method. Supersedes the earlier (now-removed) 87-skill, document-centric benchmark. This
+assessment reads the actual files, runs the actual tooling,
 and grounds every correctness claim in a `skill:line` citation.
 
 ## Why this benchmark is different from the last one
@@ -180,12 +180,12 @@ Office runs two skeletons — "Family A" (formal `## Validation checklist`) vs "
 but inconsistent. `office/editing-prose:8` has a stray pre-Scope subheading.
 `office/document-branding-standards` is the one real skill with no Related-skills links.
 
-### [Nit] Repo hygiene: duplicate cruft + count drift
-`skills_repo-starter/` and `skills_repo-starter.zip` are a stale duplicate snapshot of
-`skill-builder` (2 duplicate SKILL.md) — the only reason `find` reports 154. **Canonical
-count is now pinned at 151 catalog skills** (150 across 9 categories + the `skill-builder`
-meta-skill; the validator additionally validates 1 worked example, reported separately).
-Docs previously disagreed (87 in the old brief, "152" including the example); a doc-count
+### [Nit] Repo hygiene: count drift (resolved)
+The stale `skills_repo-starter/` duplicate snapshot and its `.zip` have been removed.
+**Canonical count is now pinned at 151 catalog skills** (150 across 9 categories + the
+`skill-builder` meta-skill; the validator additionally validates 1 worked example,
+reported separately). Docs previously disagreed (87 in the old brief, "152" including the
+example); a doc-count
 guard now fails CI if a leadership doc drifts from the canonical number.
 
 ## The cheaper-model lens (the stated goal)
@@ -217,8 +217,8 @@ review is genuinely closed.
 5. **[Minor] Leanness pass on data/ai-engineering first** (27 of 28 skills are heavy). Push
    depth into `references/`, cut lines that restate what any model knows; target ~15–30%.
 6. **[Minor] Resolve the five genuine duplicates** (merge or cross-link + hand-off).
-7. **[Nit] Delete `skills_repo-starter/` + `.zip`, pin the skill count** at 151 across README,
-   docs, and the brief. Fix the two structure slips.
+7. **[Nit] Pin the skill count** at 151 across README, docs, and the brief (done; the
+   `skills_repo-starter/` cruft has been removed). Fix the two structure slips.
 8. **[Consider] Triage the uplift tail** — for the ~20 low-uplift skills, either sharpen each
    to carry a non-obvious payload or accept them as deliberate scaffolding for weak models and
    say so explicitly in the category READMEs.
