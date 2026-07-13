@@ -127,9 +127,11 @@ cardinality. Cache only a dataset reused ≥2× and that fits — then `unpersis
 ## Examples
 **Input:** "My join takes an hour; one task runs long after the others finish."
 **Output:** Straggler in the UI = skew on the join key. First confirm AQE skew
-join is on; if a few hot keys still dominate, salt them (append a random 0–N suffix
-to the key on both sides, join, then drop the suffix). Also broadcast the small
-dimension so the big fact isn't shuffled. Re-run: task times even, wall time from
+join is on; if a few hot keys still dominate, salt them (add a random 0–N suffix to
+the hot key on the large side, replicate the small side across all N suffixes, join
+on (key, suffix), then drop it — salting both sides with independent random suffixes
+would drop non-matching rows). Also broadcast the small dimension so the big fact
+isn't shuffled. Re-run: task times even, wall time from
 60 min to 8.
 
 ## Automation opportunities

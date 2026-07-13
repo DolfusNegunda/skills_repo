@@ -59,7 +59,7 @@ the finding *and* its conditions (sample, context), not a context-free claim.
 2. **Non-linear order** — abstract, figures, conclusion first.
 3. **Method determines meaning** — understand it before trusting results.
 4. **Figures carry the results** — read them closely.
-5. **Abstract ≥ claim; results = truth** — verify the claim against the data.
+5. **Trust the data over the abstract's spin** — verify each claim against the actual results (which are themselves bounded by the method).
 6. **Extract findings with their conditions,** never context-free.
 
 ## Decision framework

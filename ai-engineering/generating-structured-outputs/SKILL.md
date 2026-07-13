@@ -52,9 +52,10 @@ Progress:
 rejected; make each enum an explicit value list, not "a string like X". Decide
 nullable vs absent for each optional field — don't leave it ambiguous.
 
-**Step 2 — Mode.** Prefer a native structured-output or tool/function mode that binds
-the schema so the model *cannot* emit off-shape text. If unavailable, use constrained
-decoding. Free-text-then-regex is the last resort and the source of most breakage.
+**Step 2 — Mode.** Prefer a native strict-schema or constrained-decoding mode that
+*guarantees* shape. A general tool/function-calling mode strongly biases toward the
+schema but does not hard-guarantee it (only strict/constrained variants do) — so
+validate regardless. Free-text-then-regex is the last resort and the source of most breakage.
 
 **Step 3 — Prompt.** State the shape and include one concrete valid example. Instruct:
 output only the object, no markdown fences, no explanation before or after.

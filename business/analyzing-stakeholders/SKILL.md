@@ -1,6 +1,6 @@
 ---
 name: analyzing-stakeholders
-description: Identify and analyze stakeholders — mapping their influence, interest, attitude, and needs — and produce a targeted engagement plan. Use when the user asks to "do a stakeholder analysis", "map stakeholders", "who do we need to manage/engage", or plan communication and buy-in for a project or change. Uses power/interest grids and RACI. Produces a stakeholder map plus a concrete engagement approach per group, not just a list of names.
+description: Identify and analyze stakeholders — mapping their influence, interest, attitude, and needs — and produce a targeted engagement plan. Use when the user asks to "do a stakeholder analysis", "map stakeholders", "who do we need to manage/engage", or plan communication and buy-in for a project or change. Uses power/interest grids. Produces a stakeholder map plus a concrete engagement approach per group, not just a list of names.
 ---
 
 # Analyzing Stakeholders

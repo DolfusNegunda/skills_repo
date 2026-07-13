@@ -43,6 +43,18 @@ Run through this before publishing a skill to the repo.
 - [ ] Rationale: a cheap model runs a tested tool more reliably than it interprets
       prose — determinism is the whole point of the library
 
+## Content correctness (is it actually right?)
+- [ ] Every load-bearing claim — formulas, algorithm steps, framework definitions —
+      checked against a primary source (a wrong formula a cheap model follows is a Blocker)
+- [ ] Named frameworks match their real definition (RICE is a *product* not a sum; CRAAP
+      has 5 elements; MERGE needs one row per key) — and the frontmatter names only methods
+      the body actually teaches (the validator flags the common cases)
+- [ ] Worked-example arithmetic reproduces (ROI/NPV figures actually compute)
+- [ ] Contested pop-wisdom is framed as one option, not stated as settled fact
+- [ ] "Always/never" absolutes are true absolutes, not overstated defaults
+- [ ] See [../../docs/correctness-audit-process.md](../../docs/correctness-audit-process.md)
+      for the periodic library-wide claim-audit
+
 ## Testing (does it work?)
 - [ ] Tested on a realistic request with a fresh Claude — it triggered
 - [ ] It found and used the right reference files

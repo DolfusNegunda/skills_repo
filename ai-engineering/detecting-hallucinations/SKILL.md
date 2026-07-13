@@ -64,7 +64,10 @@ with no supporting span. Fabricated citations — plausible references to text t
 doesn't exist or doesn't say that — are the signature failure; catch them here.
 
 **Step 5 — Self-consistency + abstain.** For high-stakes or shaky answers, sample
-multiple times and keep only claims that agree; divergence signals invention. Give
+multiple times and keep only claims that agree; divergence signals unstable invention.
+Note the limit: agreement across samples suppresses *stochastic* errors only — a
+confidently-held false fact repeats identically and passes, so consistency is not proof
+of truth. Give
 the model a real abstention path — "not stated in the sources" must be an acceptable,
 rewarded answer, not a failure.
 
@@ -77,7 +80,7 @@ See [building-llm-evaluations](../building-llm-evaluations/SKILL.md).
 2. **Every claim traces to a span** — unverifiable citations don't count.
 3. **Abstention is a correct answer** — reward "I don't know" over a confident guess.
 4. **Verify, don't trust** — check citations resolve and entail the claim.
-5. **Disagreement signals fabrication** — self-consistency exposes invented facts.
+5. **Disagreement signals fabrication** — self-consistency catches unstable inventions, not confidently-held false facts.
 6. **Faithfulness ≠ fluency** — confident, well-written text is not evidence of truth.
 
 ## Decision framework

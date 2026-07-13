@@ -80,6 +80,22 @@ for d in sorted(skill_dirs):
         warns.append(f"{sp}: description may not be third person")
     if not re.search(r"\b(use (this|when)|when the user|when you)\b", desc, re.I):
         warns.append(f"{sp}: description may lack a 'when to use' cue")
+    # Frontmatter-vs-body correctness heuristic: if the description advertises a
+    # named, distinctive framework/method, the body should actually use it - otherwise
+    # discovery mis-routes a request to a skill that never delivers the promised method
+    # (the RACI/Kotter/SIFT over-claim class). Curated to distinctive proper-noun methods
+    # so it does not false-positive on generic domain terms. Advisory only.
+    body = raw[fm.end():]
+    NAMED_METHODS = [
+        "RACI", "RAPID", "RICE", "WSJF", "MoSCoW", "SWOT", "TOWS", "PESTLE",
+        "BATNA", "ZOPA", "ADKAR", "Kotter", "CRAAP", "SIFT", "DMAIC", "DACI",
+        "Kano", "Eisenhower", "Pomodoro", "MECE", "Fermi",
+    ]
+    for method in NAMED_METHODS:
+        pat = rf"\b{re.escape(method)}\b"
+        if re.search(pat, desc, re.I) and not re.search(pat, body, re.I):
+            warns.append(f"{sp}: description names '{method}' but the body never uses "
+                         "it - align the frontmatter with the method actually taught")
     # Script-gap heuristic: LOCAL document-producing/processing skills should ship a
     # script. Scoped to the office/ category (where local file production lives) and to
     # name prefixes that imply real file I/O AND an actual format mention, so it does
@@ -104,7 +120,14 @@ for name, paths in names.items():
     if len(paths) > 1:
         errors.append(f"duplicate skill name '{name}': {paths}")
 
-print(f"Scanned {len(skill_dirs)} skills under {ROOT}")
+# Canonical count is the CATALOG (excludes worked examples nested under examples/),
+# matching generate_index.py and skills-index.md's "read this first" header. Worked
+# examples are still fully validated above; they just don't count toward the headline.
+examples = [d for d in skill_dirs if "examples" in d.replace("\\", "/").split("/")]
+catalog = len(skill_dirs) - len(examples)
+print(f"Scanned {len(skill_dirs)} SKILL.md ({catalog} catalog skills"
+      + (f" + {len(examples)} worked example{'s' if len(examples) != 1 else ''}"
+         if examples else "") + f") under {ROOT}")
 print(f"\nERRORS ({len(errors)}):")
 for e in errors:
     print("  [X]", e)

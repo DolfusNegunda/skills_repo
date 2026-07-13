@@ -66,7 +66,7 @@ the scores and reasoning so the order can be challenged and re-run.
 6. **The score informs the sequence;** dependencies and deadlines can override it.
 
 ## Decision framework
-- **Impact + confidence + reach, divided by effort?** RICE — good for feature backlogs.
+- **(Reach × Impact × Confidence) ÷ Effort?** RICE — good for feature backlogs (it's a product, not a sum).
 - **Time-sensitive value / cost of delay?** WSJF — good for flow and economic sequencing.
 - **Must / should / could / won't buckets?** MoSCoW — good for scope negotiation and releases.
 - **Urgent vs important quadrants?** Eisenhower — good for personal or ops triage.

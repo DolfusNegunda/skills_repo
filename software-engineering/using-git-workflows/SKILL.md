@@ -80,7 +80,7 @@ branches too early.
 - Rewrite freely in private; never rewrite what others have pulled.
 - Prefer `revert` over `reset` the moment a commit has been shared.
 - Small, atomic, self-contained commits beat one giant "done" commit.
-- Nothing is truly lost for ~90 days — reflog before you panic.
+- Reflog before you panic — but recover promptly: orphaned (unreachable) commits default to ~30 days, not 90.
 
 ## Decision framework
 - **Rebase vs merge:** private/unshared → rebase for linear history; shared or

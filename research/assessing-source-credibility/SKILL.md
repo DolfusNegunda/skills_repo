@@ -1,6 +1,6 @@
 ---
 name: assessing-source-credibility
-description: Evaluate the credibility of a source — its authority, accuracy, objectivity, currency, and evidence — to decide how much to trust and rely on it. Use when the user asks to "is this source reliable/credible", "evaluate this source", "can I trust this", or vet sources before citing them. Uses CRAAP/SIFT-style criteria and detects bias and misinformation signals. Produces a credibility judgment with reasoning, not a binary trust/distrust.
+description: Evaluate the credibility of a source — its authority, accuracy, objectivity, currency, and evidence — to decide how much to trust and rely on it. Use when the user asks to "is this source reliable/credible", "evaluate this source", "can I trust this", or vet sources before citing them. Uses CRAAP-style criteria and lateral reading, and detects bias and misinformation signals. Produces a credibility judgment with reasoning, not a binary trust/distrust.
 ---
 
 # Assessing Source Credibility

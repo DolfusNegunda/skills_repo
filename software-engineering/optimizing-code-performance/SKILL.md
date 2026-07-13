@@ -98,8 +98,8 @@ improvement is not an optimization.
 ## Examples
 **Input:** "This report endpoint takes 8s — make it faster."
 **Output:** Profiled: 90% of time in a loop issuing one DB call per row (N+1).
-Baseline 8.1s on 2k rows. Fix: batch into a single query + dict lookup — O(n) instead
-of O(n) round-trips. Re-benchmark: 0.4s, same output, tests green. Left a note that
+Baseline 8.1s on 2k rows. Fix: batch into a single query + dict lookup — one query
+instead of N round-trips (O(1) queries, O(n) in-memory lookup). Re-benchmark: 0.4s, same output, tests green. Left a note that
 the response is now memoized for 60s; documented the staleness window. Stopped —
 under the 1s budget.
 

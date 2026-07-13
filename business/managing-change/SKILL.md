@@ -1,6 +1,6 @@
 ---
 name: managing-change
-description: Plan and manage organizational change so it's adopted, not just deployed — building the case for change, engaging stakeholders, communicating, training, and reinforcing through a structured model. Use when the user asks to "manage this change", "plan a rollout/adoption", "help people adopt X", or reduce resistance to a new system/process/structure. Uses ADKAR/Kotter principles. Produces a change and adoption plan, not just a go-live checklist.
+description: Plan and manage organizational change so it's adopted, not just deployed — building the case for change, engaging stakeholders, communicating, training, and reinforcing through a structured model. Use when the user asks to "manage this change", "plan a rollout/adoption", "help people adopt X", or reduce resistance to a new system/process/structure. Uses the ADKAR model. Produces a change and adoption plan, not just a go-live checklist.
 ---
 
 # Managing Change
