@@ -1,90 +1,41 @@
-# Re-benchmark Request — skills_repo vs. anthropics/skills
+# Re-benchmark — COMPLETED (2026-07-10)
 
-**To the benchmarking agent:** the repo has changed materially since the last
-assessment. This brief tells you *what changed*, *how to verify it yourself*, and
-*what to re-score*. Please run a fresh, file-grounded benchmark and quality
-assessment — do not rely on the previous report's numbers; several are now stale.
+> This file previously asked an independent agent to re-benchmark the repo after the
+> document-script gap was closed. **That re-benchmark has been done.** This is now a
+> pointer/changelog entry, not an open request.
 
-## Why you're being asked again
+## Outcome
 
-The previous benchmark's single biggest finding was correct and has now been acted
-on: **executable, deterministic scripts for document work** (the one axis where
-Anthropic's flagship `docx`/`xlsx`/`pptx` skills clearly led). That gap has been
-closed for every local document skill. Re-benchmark to assess this independently.
+The full-library re-benchmark ran on **2026-07-10** and lives at
+**[benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md)** — read that for
+the scorecard, evidence, and prioritized recommendations. Headline results:
 
-## What changed since the last version
+- **Script gap confirmed closed.** Validator **0 errors / 0 warnings**; smoke test
+  **14/14**; the produce → validate → fix → re-validate loop was exercised end-to-end.
+- **Scope widened.** The benchmark now covers all **151 catalog skills across ten areas**
+  (not just the original office/review/business/research batch), and added two dimensions
+  the earlier scorecard lacked: **content correctness** and **model uplift**.
+- **Real issues found and fixed.** ~10 grounded content-correctness errors (e.g. a RICE
+  formula stated as a sum, a Spark join-salting pattern that silently dropped rows) were
+  corrected, and three frontmatter over-claims (RACI/Kotter/SIFT) reconciled with their bodies.
+- **A correctness feedback loop was added** so the class of error can't recur silently:
+  a named-method-overclaim check in `validate_skills.py`, a doc-count guard
+  (`check_docs_fresh.py`), and [correctness-audit-process.md](correctness-audit-process.md).
 
-**1. Script coverage: 4 → 11 skills.** Every local file-producing/processing office
-skill now ships a tested `scripts/` tool wired into its `## Workflow`:
+## Still open (tracked in the current benchmark)
 
-| Skill | Script | Pattern |
-|---|---|---|
-| engineering-excel-workbooks | `validate_workbook.py` | producer: validate → fix → re-validate loop |
-| authoring-word-documents | `validate_docx.py` | producer: same loop |
-| building-powerpoint-decks | `validate_pptx.py` | producer: same loop |
-| processing-documents | `detect_type.py` | router: signature detection + routing (stdlib) |
-| processing-word-documents | `extract_docx.py` | processor: extract + fidelity self-check |
-| processing-excel-files | `extract_workbook.py` | processor: extract + fidelity |
-| processing-powerpoint-files | `extract_pptx.py` | processor: extract + fidelity |
-| processing-pdf-documents | `extract_pdf.py` | processor: extract + text-vs-scanned classify |
-
-(Pre-existing: `producing-branded-documents`, `generating-data-reports`,
-`authoring-lessons-learned-docs`.)
-
-**2. Reproducible test harness in CI.** `skill-builder/scripts/smoke_test_scripts.py`
-generates real `.xlsx`/`.docx`/`.pptx`/`.pdf`/`.csv` fixtures and asserts each script's
-exit code and verdict (12/12 checks). It runs in
-`.github/workflows/validate-skills.yml` alongside the consistency validator.
-
-**3. Determinism is now an enforced authoring standard.** New "Determinism" section in
-`skill-builder/references/authoring-checklist.md`; a script-bundling note in
-`skill-builder/references/skill-template.md`; and a scoped warning in
-`skill-builder/scripts/validate_skills.py` that flags any local file-producing/
-processing skill with no `scripts/` (currently **0 hits**). Google Workspace (API)
-skills are deliberately exempt — they produce cloud documents, not local files.
-
-**4. Correctness note:** two fidelity-detection bugs in `extract_docx.py` (always-true
-header/footer flags; substring false-positives on footnotes/comments) were fixed to use
-body-reference detection. See git history.
-
-**Count correction:** the repo is **87 skills** (office 42 / review 15 / business 18 /
-research 11 / meta 1), not 83 — the earlier snapshot predated the ingestion skills.
-
-## Verify it yourself (don't take this brief's word)
-
-```bash
-python skill-builder/scripts/validate_skills.py        # expect 0 errors, 0 warnings
-pip install openpyxl python-docx python-pptx pypdf reportlab
-python skill-builder/scripts/smoke_test_scripts.py     # expect 12/12 checks passed
-find office -type d -name scripts | sort               # expect 11 skills
-```
-
-Read the actual scripts and their wired `## Workflow` / `## Scripts` sections. Confirm
-the loop is real (JSON errors → fix → re-run), not a one-time lint.
-
-## What to re-score
-
-- **Dimension 4 (executable scripts / determinism)** — previously the repo trailed
-  Anthropic badly here. Re-assess against the 11 scripts + CI smoke test.
-- Whether the **produce → validate → fix → re-validate loop** is genuinely wired (read
-  the workflows), and whether **extractor fidelity self-checks** are sound.
-- Anything still **over-claimed**: call out any script that is inert, untested, or whose
-  SKILL.md promises more than the script delivers.
-- Remaining honest gaps: PDF/PPTX **table-structure** fidelity and **true redaction** are
-  still library-dependent operations documented in references, not scripted. Excel
-  formula-error detection needs an external recalc (openpyxl doesn't compute formulas).
+- Leanness trim of the heaviest data-/AI-engineering bodies.
+- Resolve a few genuine duplicate skills.
+- **Excel formula recalculation:** a `recalculate_workbook.py` (headless LibreOffice) has
+  been added and its fallback path tested, but the real recalculation path is **not yet
+  verified in a LibreOffice-enabled environment** — do not claim that specific gap closed
+  until it is.
+- A correctness sample of the `review/` category (its reader hit a session limit; only
+  structural inheritance was independently confirmed).
 
 ## Licensing constraint (unchanged, must hold)
 
 `anthropics/skills` document skills (`docx`/`pdf`/`pptx`/`xlsx`) are source-available,
-all-rights-reserved. **Describe and re-implement their *patterns*; never copy their
-files, prose, script names, or layouts.** Do not clone, vendor, or retain their content
-— even temporarily. Everything in this repo was authored fresh from our own reference
-implementation (`producing-branded-documents/scripts/validate_output.py`). Keep it that
-way in any recommendation you make.
-
-## Deliverable
-
-A fresh scorecard (same 10 dimensions as `benchmark-vs-anthropic.md`), a verdict on
-whether the script gap is genuinely closed, and a prioritized list of what remains —
-grounded in files you actually read and commands you actually ran.
+all-rights-reserved. **Describe and re-implement their *patterns*; never copy their files,
+prose, script names, or layouts.** Everything here was authored fresh from our own
+reference implementation. Keep it that way in any future work.

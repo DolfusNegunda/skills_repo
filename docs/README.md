@@ -9,8 +9,9 @@ you.
 |---|---|
 | [LEAD-BRIEF.md](LEAD-BRIEF.md) | One-page leadership briefing: business case, evidence, honest status, and the decisions to make. **Start here.** |
 | [../ONBOARDING.md](../ONBOARDING.md) | 5-minute orientation — what the repo is, why it exists, what's built, how it's used. Ends with a one-paragraph version for the lead. |
-| [benchmark-vs-anthropic.md](benchmark-vs-anthropic.md) | The quality assessment vs. Anthropic's own skills — scorecard, gaps, and how they were closed. |
-| [REBENCHMARK-REQUEST.md](REBENCHMARK-REQUEST.md) | The brief for an independent AI re-assessment (what changed, how to verify, what to re-score). |
+| [benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md) | **Current** full-library quality assessment (all 151 skills, 12 dimensions incl. content correctness & model uplift). **Start here for quality.** |
+| [benchmark-vs-anthropic.md](benchmark-vs-anthropic.md) | The earlier assessment (87-skill, document-centric) — **superseded**, kept for history. |
+| [correctness-audit-process.md](correctness-audit-process.md) | How content correctness is kept honest: the mechanical check, per-skill gate, and periodic adversarial audit. |
 
 ## For anyone new (non-technical welcome)
 
@@ -33,7 +34,7 @@ you.
 | [../README.md](../README.md) | The technical entry point: categories, layout, conventions, how to add a skill. |
 | [../skill-builder/SKILL.md](../skill-builder/SKILL.md) | The meta-skill — house style, frontmatter rules, template, checklist, the determinism standard. |
 | [skills-library.html](skills-library.html) | The technical catalog for setup/maintenance. |
-| Category indexes | [../office/README.md](../office/README.md) · [../review/README.md](../review/README.md) · [../business/README.md](../business/README.md) · [../research/README.md](../research/README.md) |
+| Category indexes | [../office/](../office/README.md) · [../review/](../review/README.md) · [../business/](../business/README.md) · [../research/](../research/README.md) · [../software-engineering/](../software-engineering/README.md) · [../data-engineering/](../data-engineering/README.md) · [../ai-engineering/](../ai-engineering/README.md) · [../reasoning/](../reasoning/README.md) · [../productivity/](../productivity/README.md) |
 | [skills-catalog.md](skills-catalog.md) | The full backlog and roadmap. |
 
 ## Background / rationale
@@ -46,9 +47,12 @@ you.
 ## How quality is enforced (the machinery)
 
 - `skill-builder/scripts/validate_skills.py` — consistency gate (frontmatter, naming,
-  links, duplicates, script-gap warning). Currently **0 errors, 0 warnings**.
+  links, duplicates, script-gap + named-method-overclaim warnings). Currently **0 errors,
+  0 warnings** (151 catalog skills + 1 worked example).
 - `skill-builder/scripts/smoke_test_scripts.py` — runs every bundled document script
-  against generated fixtures (**12/12**).
+  against generated fixtures (**15/15**).
+- `skill-builder/scripts/check_docs_fresh.py` — fails if a leadership doc's headline skill
+  count or smoke-test count drifts from the canonical (derived) numbers.
 - `skill-builder/scripts/generate_index.py` — regenerates `skills-index.md`.
-- `.github/workflows/validate-skills.yml` — runs the validator **and** the smoke test
-  on every push/PR.
+- `.github/workflows/validate-skills.yml` — runs the validator, the smoke test, **and**
+  the doc-freshness guard on every push/PR.

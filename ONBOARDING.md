@@ -106,15 +106,16 @@ review skills double as team quality rubrics.
 
 ## For the project lead — the one-paragraph version
 
-We've built a validated library of 87 reusable "how-to" skills so that cheaper AI
+We've built a validated library of 151 reusable "how-to" skills so that cheaper AI
 models (and people) can do office, document-processing, review, business-analysis,
-and research work to a consistent professional standard. An agent reads a lightweight
-index, picks the right skill for each request, and follows its baked-in procedure —
-cutting cost while holding quality. Document work is backed by tested, deterministic
-scripts (validated in CI), and quality has been benchmarked against Anthropic's own
-skills. It's on GitHub, auto-checked on every change, and easy to extend. Best next
-steps: run a real-task pilot to *measure* the cost/quality win, pick a license so it
-can be shared, and commission the independent re-benchmark.
+research, software-, data-, and AI-engineering work (plus reasoning and productivity
+methods) to a consistent professional standard. An agent reads a lightweight index,
+picks the right skill for each request, and follows its baked-in procedure — cutting
+cost while holding quality. Document work is backed by tested, deterministic scripts
+(validated in CI), and quality has now been independently re-benchmarked against
+Anthropic's own method. It's on GitHub, auto-checked on every change, and easy to
+extend. Best next steps: run a real-task pilot to *measure* the cost/quality win, pick
+a license so it can be shared, and act on the completed re-benchmark's follow-ups.
 
 For the fuller leadership briefing (business case, evidence, decisions to make), see
 [docs/LEAD-BRIEF.md](docs/LEAD-BRIEF.md).

@@ -1,5 +1,12 @@
 # Office Skills Catalog & Research
 
+> **Scope note (2026-07):** This is the original *office* backlog and roadmap, not the full
+> current set. The library has since grown to **151 skills across ten areas** — office,
+> review, business, research, software-engineering, data-engineering, AI-engineering,
+> reasoning, productivity, plus the `skill-builder` meta-skill. See
+> [../skills-index.md](../skills-index.md) for every skill and the per-category READMEs
+> (linked from [../README.md](../README.md)) for the newer areas.
+
 A research-backed backlog of skills to build for everyday office users. Use it to
 decide what to build and in what order. Every entry follows the house style in
 [../skill-builder/SKILL.md](../skill-builder/SKILL.md).

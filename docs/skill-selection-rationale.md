@@ -1,5 +1,11 @@
 # Why These Skills — Research & Selection Rationale
 
+> **Scope note (2026-07):** This rationale covers the **first (office) batch** only. The
+> library has since expanded to **151 skills across ten areas** (adding software-,
+> data-, and AI-engineering, reasoning, and productivity). For the complete current set see
+> [../skills-index.md](../skills-index.md); each newer category's README states its own
+> selection rationale.
+
 A defensible, evidence-backed justification for the first batch of skills. Use it
 to explain the roadmap to stakeholders. Companion to
 [skills-catalog.md](skills-catalog.md) (the full backlog) and

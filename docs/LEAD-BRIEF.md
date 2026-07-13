@@ -2,18 +2,19 @@
 
 A one-page briefing for a project lead or manager. Outcomes and decisions, not
 implementation detail. For orientation see [../ONBOARDING.md](../ONBOARDING.md); for
-the quality assessment see [benchmark-vs-anthropic.md](benchmark-vs-anthropic.md).
+the current quality assessment see
+[benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md).
 
 ## The one-paragraph version
 
-We've built and validated a shared library of **87 reusable "skill" playbooks** that
-let **cheaper, smaller AI models do everyday office, document, review,
-business-analysis, and research work at a consistent professional standard** — cutting
-per-task AI cost while holding quality. Document work (Word/Excel/PowerPoint/PDF) now
-runs through **tested, deterministic scripts**, so a cheap model runs a proven tool
-instead of improvising. It's on GitHub, **auto-checked on every change** (all checks
-green), benchmarked against Anthropic's own skills, and ready for an independent
-quality re-assessment.
+We've built and validated a shared library of **151 reusable "skill" playbooks** that
+let **cheaper, smaller AI models do everyday office, document, review, business-analysis,
+research, software-, data-, and AI-engineering work at a consistent professional
+standard** — cutting per-task AI cost while holding quality. Document work
+(Word/Excel/PowerPoint/PDF) now runs through **tested, deterministic scripts**, so a
+cheap model runs a proven tool instead of improvising. It's on GitHub, **auto-checked on
+every change** (all checks green), and has now been **independently re-benchmarked
+against Anthropic's own method** (2026-07-10).
 
 ## Why it exists (the business case)
 
@@ -30,23 +31,27 @@ trees, and now runnable tools.
 
 ## Where we are (evidence, not claims)
 
-- **87 skills** across office, review, business, and research, each passing an automated
-  quality gate (**0 errors, 0 warnings**).
-- **Benchmarked against Anthropic's own published skills:** the repo **matches or
-  exceeds** them on breadth, discoverability, and repository consistency.
+- **151 skills** across ten areas (office, review, business, research,
+  software-engineering, data-engineering, AI-engineering, reasoning, productivity, plus
+  the `skill-builder` meta-skill), each passing an automated quality gate (**0 errors,
+  0 warnings**).
+- **Independently re-benchmarked against Anthropic's own method (2026-07-10):** the repo
+  **matches or exceeds** them on breadth, discoverability, and repository consistency.
 - **The one axis Anthropic led on — executable, deterministic document tooling — is now
   closed.** 11 document skills ship tested scripts (validators that catch errors before
   a file ships; extractors that ingest files faithfully), all **verified automatically
-  in CI (12/12 checks passing)** on every change.
+  in CI (15/15 checks passing)** on every change.
 
 ## Honest status (so nothing is over-sold)
 
-- The quality score on the tooling axis is currently **self-assessed**. A formal
-  **re-benchmark request** ([REBENCHMARK-REQUEST.md](REBENCHMARK-REQUEST.md)) is ready
-  so an independent AI pass can confirm it. A fair independent score may land slightly
-  lower — that's expected and healthy.
-- A few operations remain library-dependent and are documented as guidance, not yet
-  scripted (e.g. PDF/PowerPoint table-structure fidelity, true redaction).
+- The independent re-benchmark is **done** (see
+  [benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md)). It confirmed the
+  script gap is closed, and — as expected — found real issues to fix: ~10 content-correctness
+  errors (now corrected) and the absence of any automated correctness check (now added). No
+  Blockers.
+- A few operations remain library-dependent and are documented as guidance, not yet fully
+  scripted (e.g. PDF/PowerPoint table-structure fidelity, true redaction, and Excel formula
+  recalculation — which needs a headless LibreOffice pass not yet verified end-to-end).
 - The cost/quality win is **designed-in but not yet measured on your workload** — a
   pilot turns "should save money" into a number.
 
@@ -56,8 +61,9 @@ trees, and now runnable tools.
    savings and quality. This is the highest-value next step.
 2. **Pick a license** (e.g. MIT for open reuse, or keep internal) so it can be shared
    and rolled out.
-3. **Commission the independent re-benchmark** before citing any quality numbers
-   externally.
+3. **Act on the completed re-benchmark's remaining recommendations** (leanness trim,
+   resolve a few duplicate skills, verify the Excel recalculation path in a
+   LibreOffice-enabled environment) before citing quality numbers externally.
 
 ## How it's used (two audiences)
 
@@ -70,6 +76,6 @@ trees, and now runnable tools.
 ## Where to read more
 
 - [../ONBOARDING.md](../ONBOARDING.md) — 5-minute orientation for anyone new.
-- [benchmark-vs-anthropic.md](benchmark-vs-anthropic.md) — the quality assessment.
-- [REBENCHMARK-REQUEST.md](REBENCHMARK-REQUEST.md) — the independent re-assessment brief.
+- [benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md) — the current, full-library quality assessment.
+- [benchmark-vs-anthropic.md](benchmark-vs-anthropic.md) — the earlier (superseded) assessment, kept for history.
 - [USER-GUIDE.md](USER-GUIDE.md) — plain-language guide for non-technical users.

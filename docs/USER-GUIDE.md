@@ -3,6 +3,11 @@
 Small assistants that do the writing and paperwork you repeat every week.
 **No commands to memorize** — just ask in your own words.
 
+> This guide covers the **everyday office helpers**. The full library also includes more
+> technical helpers (software, data, and AI engineering, plus reasoning and planning
+> methods) — **151 skills** in all. If you don't see what you need here, just ask; the
+> full list lives in [../skills-index.md](../skills-index.md).
+
 > Prefer a nicer page? Open **[user-guide.html](user-guide.html)** in any web browser
 > (double-click the file). This is the same guide in plain text.
 

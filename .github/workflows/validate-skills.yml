@@ -19,6 +19,8 @@ jobs:
           python-version: "3.11"
       - name: Validate all skills
         run: python skill-builder/scripts/validate_skills.py .
+      - name: Check leadership docs are fresh (skill/check counts)
+        run: python skill-builder/scripts/check_docs_fresh.py
 
   smoke-test-scripts:
     # Proves the bundled document scripts actually run and give the documented

@@ -1,5 +1,12 @@
 # Quality Benchmark: this repo vs. Anthropic's Skills approach
 
+> **⚠️ SUPERSEDED (2026-07-10).** This assessment graded the earlier **87-skill,
+> document-centric** repo, and its "12/12 checks / 87 skills" figures were accurate *then*.
+> The library has since grown to **151 skills across ten areas** and been re-benchmarked in
+> full. **Read [benchmark-2026-07-full-library.md](benchmark-2026-07-full-library.md) for the
+> current assessment.** This file is kept as a historical record; its numbers are archival,
+> not current.
+
 An honest assessment of how this repo's skills compare, in method and quality, to
 Anthropic's own Agent Skills — scored per dimension, with gaps rated by severity and
 prioritized fixes.
