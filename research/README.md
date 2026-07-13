@@ -47,5 +47,11 @@ for appraisal and with the deep-research harness for large multi-source efforts.
   feed business decisions ([../business/writing-business-cases](../business/writing-business-cases/SKILL.md),
   [../business/building-decision-matrices](../business/building-decision-matrices/SKILL.md)).
 - Appraise any study with [../review/reviewing-research](../review/reviewing-research/SKILL.md).
+- These pair with the [../reasoning](../reasoning/README.md) methods —
+  `verifying-facts` ↔ [../reasoning/testing-hypotheses](../reasoning/testing-hypotheses/SKILL.md),
+  and `synthesizing-research` ↔ [../reasoning/decomposing-problems](../reasoning/decomposing-problems/SKILL.md).
+- When the research subject is an AI system, `evaluating-technology` feeds
+  [../ai-engineering](../ai-engineering/README.md) (e.g.
+  [../ai-engineering/building-llm-evaluations](../ai-engineering/building-llm-evaluations/SKILL.md)).
 - For a large, multi-source, fact-checked report, use the built-in **deep-research**
   harness; these skills define the underlying disciplines it applies.

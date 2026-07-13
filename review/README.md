@@ -51,5 +51,14 @@ the domain skills reference it rather than repeating it.
   [../office/writing-reports](../office/writing-reports/SKILL.md);
   `reviewing-dashboards` ↔ [../office/designing-dashboards](../office/designing-dashboards/SKILL.md);
   `reviewing-business-cases` ↔ [../business/writing-business-cases](../business/writing-business-cases/SKILL.md).
+- This category is the **critique counterpart to
+  [../software-engineering](../software-engineering/README.md)**: `reviewing-code` ↔
+  [../software-engineering/implementing-features](../software-engineering/implementing-features/SKILL.md),
+  `reviewing-python` ↔ [../software-engineering/writing-automated-tests](../software-engineering/writing-automated-tests/SKILL.md),
+  `reviewing-sql` ↔ [../software-engineering/authoring-sql-queries](../software-engineering/authoring-sql-queries/SKILL.md),
+  `reviewing-architecture` ↔ [../software-engineering/designing-apis](../software-engineering/designing-apis/SKILL.md).
+- `reviewing-sql` also gates work from
+  [../data-engineering](../data-engineering/README.md) (e.g.
+  [../data-engineering/ensuring-data-quality](../data-engineering/ensuring-data-quality/SKILL.md)).
 - `reviewing-code` uses the same discipline as Claude Code's built-in `/code-review`
   but is portable and language-agnostic.

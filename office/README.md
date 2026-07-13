@@ -111,3 +111,12 @@ quality-gate with a [../review](../review/README.md) skill (e.g.
 `designing-dashboards` ↔ [../review/reviewing-dashboards](../review/reviewing-dashboards/SKILL.md));
 and they render deliverables produced by the [../business](../business/README.md)
 and [../research](../research/README.md) skills.
+
+They also reach into the newer technical and personal-effectiveness areas:
+- Technical documentation overlaps engineering practice —
+  [writing-technical-documentation](writing-technical-documentation/SKILL.md) ↔
+  [../software-engineering](../software-engineering/README.md) (e.g.
+  [../software-engineering/designing-apis](../software-engineering/designing-apis/SKILL.md)).
+- Managing the personal workload *around* document work lives in
+  [../productivity](../productivity/README.md) (planning, task and time management,
+  note-taking) — a natural companion set to these office skills.

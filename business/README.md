@@ -58,3 +58,11 @@ rendering and to the review skills for quality gates.
 - `planning-projects` uses `maintaining-risk-registers` and `analyzing-stakeholders`.
 - Render deliverables with the office skills ([../office/writing-reports](../office/writing-reports/SKILL.md),
   [../office/engineering-excel-workbooks](../office/engineering-excel-workbooks/SKILL.md)).
+- The decision and analysis skills lean on the
+  [../reasoning](../reasoning/README.md) methods: `building-decision-matrices` ↔
+  [../reasoning/analyzing-tradeoffs](../reasoning/analyzing-tradeoffs/SKILL.md),
+  `performing-business-analysis` ↔ [../reasoning/analyzing-root-causes](../reasoning/analyzing-root-causes/SKILL.md),
+  `analyzing-cost-benefit` ↔ [../reasoning/estimating-under-uncertainty](../reasoning/estimating-under-uncertainty/SKILL.md).
+- For rolling out an AI system as an organizational change, pair `managing-change`
+  with [../ai-engineering](../ai-engineering/README.md) (e.g.
+  [../ai-engineering/designing-ai-systems](../ai-engineering/designing-ai-systems/SKILL.md)).
